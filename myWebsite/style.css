@@ -1,0 +1,30 @@
+
+/* remove any default browser styling*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+.titleBorder {
+   border: 50px solid white;
+   text-align: center;
+   color: white;
+   background: none; 
+   margin: 0;
+   padding: 0;
+
+}
+.toDoContainer{
+    background: white;
+}
+
+h1{
+    color: black;
+    margin: 0; 
+    padding: 0;
+}
+
+body {
+    background-color: #9ad9ab
+}
