@@ -1,23 +1,49 @@
-<!DOCTYPE html> 
-<html>
-    <head>
-    <link rel="stylesheet" href ="style.css">
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="style.css"> 
+<title>Study Buddy</title>
+<style>
+
+</style>
 </head>
-    <body>
- 
+<body> 
 
-    <div class ="titleBorder">
-       <h1>Project Name</h1> <!--issue with border, gap-->
-    </div>
 
-    <div id = "toDoContainer">
-        <p1>To do list; Enter tasks below</p1>
-        <input type = "text" id="tasks" placeholder="add tasks here"
-        <button>Done</button>
-        
-    </div>
+<div class="header">
+  <h1>Study Buddy</h1>
+</div>
 
+<div class="main">
+
+  <div id="todoForm">
+    <input type="text" id="taskInput" placeholder="Enter your task">
+    <button type="button" onclick="addTask()">Add Task</button>
+  </div>
+  <ul id="taskList">
    
+  </ul>
+</div>
 
-    </body>
-</html> 
+<script>
+  function addTask() {
+      var taskInput = document.getElementById('taskInput'); // get the input
+      var taskList = document.getElementById('taskList'); // get the list
+
+      
+      if (taskInput.value.trim() !== '') { //check if the to-do list input is empty
+          //create a new list item
+          var li = document.createElement('li');
+          li.appendChild(document.createTextNode(taskInput.value));
+
+          //add the new task to the list
+          taskList.appendChild(li);
+
+      }
+  }
+</script>
+
+</body>
+</html>
+
+
+
