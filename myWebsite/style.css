@@ -1,34 +1,46 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* Header/website title */
-.header {
-  padding: 20px;
+/* Website header/banner */
+header {
+  background-color: #6e8266;
+  padding: 10px;
   text-align: center;
-  background: #93C385;
+  font-size: 25px;
   color: white;
 }
 
-/* font size */
-.header h1 {
-  font-size: 20px;
+.todobox{
+  box-sizing: border-box;
+  min-width: 600px;
+  min-height: 250px;  /*stops the box wrapping to the size of the content/to-do list */
+  max-height: 250px; /* stops the box growing with the content */
+  background-color: blue;
 }
 
-/* Main column ; keeps content away from the edges*/
-.main {   
-  width: 100%;
-  background-color: white;
-  padding: 20px;
-}
-
-/* To-Do List styling */
-#todoForm {
+.box2{
+  width: 48%; 
   margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ccc;
 }
 
-#taskList {
-  list-style-type: none;
-  padding: 0;
-} 
+.box3{
+  width: 48%; 
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ccc;
+
+}
+
+.box4{
+  width: 48%; 
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ccc;
+}
+
+
+
+

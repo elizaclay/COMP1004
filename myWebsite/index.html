@@ -1,42 +1,63 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css"> 
-<title>Study Buddy</title>
-<style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"> <!--for font library-->
 
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Study Buddy</title>
+
 </head>
-<body> 
+<body>
+
+<header>
+    <h1>Study Buddy</h1>
+</header>
 
 
-<div class="header">
-  <h1>Study Buddy</h1>
-</div>
+    <div class ="todobox"> <!--container for to do list-->
+        <h2>Box 1</h2>
+          <!-- TO DO LIST -->
+          <div id="todoForm">
+            <input type="text" id="taskInput" placeholder="Enter your task">
+            <button type="button" onclick="addTask()">Add Task</button> 
+            <button type = "button" >Clear</button> <!--clear button unfinished-->
+          <ul id="taskList"> 
+           
+          </ul>
+        </div>
+      </div>
+        
 
-<div class="main">
+    <div class ="box2"> 
+        <h2>Box 2</h2>
+    </div>
 
-  <div id="todoForm">
-    <input type="text" id="taskInput" placeholder="Enter your task">
-    <button type="button" onclick="addTask()">Add Task</button>
-  </div>
-  <ul id="taskList">
-   
-  </ul>
-</div>
+    <div class ="box3">
+        <h2>Box 3</h2>
+        
+    </div>
+
+    <div class ="box4">
+        <h2>Box 4</h2>
+    </div>
+
 
 <script>
+
   function addTask() {
       var taskInput = document.getElementById('taskInput'); // get the input
       var taskList = document.getElementById('taskList'); // get the list
+      var maxNum = 5; //maximum number of tasks
 
-      
-      if (taskInput.value.trim() !== '') { //check if the to-do list input is empty
+      if (taskInput.value.trim() !== ''&& taskList.children.length < maxNum) { //chceck if input empty & check if tasks exceeded maximum value
           //create a new list item
           var li = document.createElement('li');
           li.appendChild(document.createTextNode(taskInput.value));
 
           //add the new task to the list
-          taskList.appendChild(li);
+          taskList.appendChild(li);     
 
       }
   }
@@ -44,6 +65,4 @@
 
 </body>
 </html>
-
-
 
