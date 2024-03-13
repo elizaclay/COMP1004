@@ -22,7 +22,9 @@
           <div id="todoForm">
             <input type="text" id="taskInput" placeholder="Enter your task">
             <button type="button" onclick="addTask()">Add Task</button> 
-            <button type = "button" >Clear</button> <!--clear button unfinished-->
+            <button type = "button"  onclick ="clearTasks()">Clear</button> 
+            <button type="button" onclick="saveTasks()">Save Tasks</button> 
+            <button type ="button" onclick ="loadTasks()">Load Tasks</button> 
           <ul id="taskList"> 
            
           </ul>
@@ -61,6 +63,30 @@
 
       }
   }
+
+  function clearTasks() {
+    // Show confirmation pop up to warn the user
+    var confirmClear = confirm("You are about to erase all tasks, are you sure you want to do this?"); //js pop up warning message
+    // Check if the user clicked ok, if so continue function 
+    if (confirmClear) {
+    var taskList = document.getElementById('taskList') //get list 
+    taskList.innerHTML = ''; //replace the list with '' to clear it 
+  }
+}
+
+function saveTasks(){
+  var taskList = document.getElementById('taskList'); //get task list
+  var tasks = [];  //empty array 
+  for (var i = 0; i <taskList.children.length; i++){ //itterate through task list as long as i is less than task list
+    var currentTask = taskList.children[i] //get the current task item
+    tasks.push(currentTask.textContent) //push collected task(s) to task array
+  }
+   
+  return tasks;
+
+}
+
+
 </script>
 
 </body>
