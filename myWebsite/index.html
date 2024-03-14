@@ -31,7 +31,7 @@
         </div>
       </div>
         
-
+                             
     <div class ="box2"> 
         <h2>Box 2</h2>
     </div>
@@ -75,14 +75,15 @@
 }
 
 function saveTasks(){
+  var confirmsave= confirm("You are about to save your to-do list to your desktop, are you sure you want to do this?"); //js pop up warning message
   var taskList = document.getElementById('taskList'); //get task list
   var tasks = [];  //empty array 
   for (var i = 0; i <taskList.children.length; i++){ //itterate through task list as long as i is less than task list
     var currentTask = taskList.children[i] //get the current task item
     tasks.push(currentTask.textContent) //push collected task(s) to task array
+    
   }
-   
-  return tasks;
+
 
 }
 
