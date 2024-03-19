@@ -1,45 +1,96 @@
 body {
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* Website header/banner */
+  
+  font-family: 'Montserrat', sans-serif; 
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  justify-content: flex-start; 
+  margin: 0; 
+  padding: 0; 
+  }
+  
 header {
-  background-color: #6e8266;
+  background-color: #6e8266; 
+  padding: 20px;
+ text-align: center;
+ font-size: 25px;
+ color: white;
+ width: 100%;
+ }
+
+
+.todobox {
+ box-sizing: border-box;
+ width: 300px; 
+ margin: 20px auto; 
+ padding: 20px;
+ background-color: #ffffff; 
+ border: 1px solid #ddd; 
+}
+
+#todoForm {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+}
+
+#taskInput {
   padding: 10px;
-  text-align: center;
-  font-size: 25px;
+  font-size: 16px; 
+  border: 1px solid #ddd;
+  border-radius: 4px; 
+}
+
+#todoForm button {
+  padding: 10px 20px;
+  background-color: #6e8266; 
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; 
 }
 
-.todobox{
-  box-sizing: border-box;
-  min-width: 600px;
-  min-height: 250px;  /*stops the box wrapping to the size of the content/to-do list */
-  max-height: 250px; /* stops the box growing with the content */
-  background-color: blue;
+#todoForm button:hover {
+  background-color: #5d6e5a; 
 }
 
-.box2{
-  width: 48%; 
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: #ccc;
+
+#taskList {
+  list-style-type: none; 
+  padding: 0; 
+  margin-top: 20px; 
 }
 
-.box3{
-  width: 48%; 
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: #ccc;
-
+#taskList li {
+  background: #f9f9f9; 
+  border: 1px solid #eee; 
+  padding: 10px;
+  margin-bottom: 5px; 
+  display: flex;
+  align-items: center; 
 }
 
-.box4{
-  width: 48%; 
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: #ccc;
+#clearButton { 
+  margin-top: 10px; 
 }
+
+
+.fileInputLabel {
+  margin-top: 10px; 
+}
+
+.fileInputLabel:hover {
+  background-color: #5d6e5a; 
+}
+
+
+
+
+
+
+
+
 
 
 

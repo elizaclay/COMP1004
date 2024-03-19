@@ -2,34 +2,37 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"> <!--for font library-->
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
     <title>Study Buddy</title>
 
 </head>
 <body>
 
 <header>
-    <h1>Study Buddy</h1>
+    <h1>Study Buddy</h1> <!--website banner-->
 </header>
 
-
+<div class="main-content">
     <div class ="todobox"> <!--container for to do list-->
         <h2>Box 1</h2>
-          <!-- TO DO LIST -->
+          <!-- TO DO LIST ELEMENTS -->
           <div id="todoForm">
-            <input type="text" id="taskInput" placeholder="Enter your task">
-            <button type="button" onclick="addTask()">Add Task</button> 
-            <button type = "button"  onclick ="clearTasks()">Clear</button> 
-            <button type="button" onclick="saveTasks()">Save Tasks</button> 
-            <button type ="button" onclick ="loadTasks()">Load Tasks</button> 
-          <ul id="taskList"> 
-           
-          </ul>
+            <input type="text" class="button-style" id="taskInput" placeholder="Enter your task">
+            <button type="button" class="button-style" onclick="addTask()">Add Task</button> 
+            <button type = "button" class="button-style" onclick ="clearTasks()">Clear</button> 
+            <button type="button"  class="button-style" onclick="saveTasks()">Save Tasks</button> 
+
+
+            <button type = "button"> <label for="fileInput" class="button-style" >Load Tasks</label></button> <!--file input button-->
+            <input type="file" id="fileInput" accept=".json" style="display: none;"> <!-- only accept json file-->
+            <button id="uploadButton">Upload Tasks</button>
+            <ul id="taskList"></ul> 
         </div>
       </div>
+    </div>
+
         
                              
     <div class ="box2"> 
@@ -45,50 +48,6 @@
         <h2>Box 4</h2>
     </div>
 
-
-<script>
-
-  function addTask() {
-      var taskInput = document.getElementById('taskInput'); // get the input
-      var taskList = document.getElementById('taskList'); // get the list
-      var maxNum = 5; //maximum number of tasks
-
-      if (taskInput.value.trim() !== ''&& taskList.children.length < maxNum) { //chceck if input empty & check if tasks exceeded maximum value
-          //create a new list item
-          var li = document.createElement('li');
-          li.appendChild(document.createTextNode(taskInput.value));
-
-          //add the new task to the list
-          taskList.appendChild(li);     
-
-      }
-  }
-
-  function clearTasks() {
-    // Show confirmation pop up to warn the user
-    var confirmClear = confirm("You are about to erase all tasks, are you sure you want to do this?"); //js pop up warning message
-    // Check if the user clicked ok, if so continue function 
-    if (confirmClear) {
-    var taskList = document.getElementById('taskList') //get list 
-    taskList.innerHTML = ''; //replace the list with '' to clear it 
-  }
-}
-
-function saveTasks(){
-  var confirmsave= confirm("You are about to save your to-do list to your desktop, are you sure you want to do this?"); //js pop up warning message
-  var taskList = document.getElementById('taskList'); //get task list
-  var tasks = [];  //empty array 
-  for (var i = 0; i <taskList.children.length; i++){ //itterate through task list as long as i is less than task list
-    var currentTask = taskList.children[i] //get the current task item
-    tasks.push(currentTask.textContent) //push collected task(s) to task array
-    
-  }
-
-
-}
-
-
-</script>
 
 </body>
 </html>
