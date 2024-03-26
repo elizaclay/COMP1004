@@ -1,38 +1,67 @@
-body {
   
-  font-family: 'Montserrat', sans-serif; 
-  background-color: #f4f4f4;
-  display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
-  justify-content: flex-start; 
-  margin: 0; 
-  padding: 0; 
-  }
-  
-header {
-  background-color: #6e8266; 
-  padding: 20px;
- text-align: center;
- font-size: 25px;
- color: white;
- width: 100%;
- }
-
-
-.todobox {
- box-sizing: border-box;
- width: 300px; 
- margin: 20px auto; 
- padding: 20px;
- background-color: #ffffff; 
- border: 1px solid #ddd; 
+ /* remove any default browser styling*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
 }
 
+ body {
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: #6e8266;
+    padding: 20px;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 10px; 
+    flex-grow: 1; 
+    box-sizing: border-box; 
+  }
+  
+  .grid-item {
+    border: 1px solid #ccc;
+    padding: 30px;
+    display: flex;
+    border-radius: 10px 20px 30px 40px;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; 
+  }
+  
+  .todobox {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    padding: 20px;
+    background-color: #ffffff; 
+    border: 1px solid #ddd;
+    gap: 10px; 
+  }
+
+  #taskList li {
+    padding: 5px; 
+    padding-top: 5px;
+    list-style-type: none; 
+    cursor: pointer; 
+    margin-right: 200px;
+  }
+   
 #todoForm {
   display: flex;
-  flex-direction: column; 
-  gap: 10px; 
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start; 
 }
 
 #taskInput {
@@ -43,7 +72,8 @@ header {
 }
 
 #todoForm button {
-  padding: 10px 20px;
+  padding: 10px;
+  width: 215px;
   background-color: #6e8266; 
   color: white;
   border: none;
@@ -55,26 +85,9 @@ header {
   background-color: #5d6e5a; 
 }
 
-
-#taskList {
-  list-style-type: none; 
-  padding: 0; 
-  margin-top: 20px; 
-}
-
-#taskList li {
-  background: #f9f9f9; 
-  border: 1px solid #eee; 
-  padding: 10px;
-  margin-bottom: 5px; 
-  display: flex;
-  align-items: center; 
-}
-
 #clearButton { 
   margin-top: 10px; 
 }
-
 
 .fileInputLabel {
   margin-top: 10px; 
@@ -84,14 +97,25 @@ header {
   background-color: #5d6e5a; 
 }
 
+.linethrough{
+  text-decoration: line-through;
+  color: #999; 
+}
 
+.timer-container{
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: #ffffff; 
+  border: 1px solid #ddd; 
+  text-align: center;
+}
 
-
-
-
-
-
-
-
-
+.timer-container button {
+  padding: 10px 20px;
+  background-color: #6e8266; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; 
+}
 

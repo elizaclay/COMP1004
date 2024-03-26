@@ -1,7 +1,7 @@
 function addTask() { // adds a user's task to the task-list if existing tasks does not exceed limit
     var taskInput = document.getElementById('taskInput'); // get the user text input 
     var taskList = document.getElementById('taskList'); // get the list
-    var maxNum = 5; //maximum number of tasks
+    var maxNum = 6; //maximum number of tasks
 
     if (taskInput.value.trim() !== ''&& taskList.children.length < maxNum) { //If the input is not empty and tasks do not exceed max value, add task to list
         //create a new list item
@@ -9,17 +9,26 @@ function addTask() { // adds a user's task to the task-list if existing tasks do
         li.appendChild(document.createTextNode(taskInput.value));
 
         taskInput.value = ''; // clear the input box after a task is added
-
-        //create a check box and append it to task 
+        
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox'; //define input as check box 
         checkbox.className = 'taskCheckbox'; //check box class 
-        li.appendChild(checkbox); //append checkbox to task 
+        li.appendChild(checkbox); //append checkbox to task
 
-        taskList.appendChild(li); // add new task to the list
+        taskList.appendChild(li); // add new task to the list 
 
-    }
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                li.classList.add('linethrough'); // when the check box is ticked, cross out the task using css class
+                setTimeout(function() {
+                    li.remove();  // remove task.. after 3milliseconds
+                }, 300); 
+            }
+        });
+        
 }
+}
+
 
 function clearTasks() {
   // Show confirmation pop up to warn the user
@@ -88,5 +97,4 @@ document.addEventListener('DOMContentLoaded', function() { //check dom has loade
         });
     }
 });
-
 
