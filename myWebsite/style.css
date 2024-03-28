@@ -121,10 +121,19 @@
   width: 112px;
 }
 
-/* timer styling */
+/* timer text styling */
 
 .timertext{
   font-size: 100px;
   color: rgb(67, 64, 64);
 }
 
+/* styling for notes section */
+#noteInput {
+  resize: none;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif; 
+  
+}

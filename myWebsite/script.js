@@ -166,5 +166,6 @@ function countReset () { //function to reset count to 00:00
 
 resetButton.addEventListener('click', countReset); //call function to reset timer to 00:00 when reset button is clicked 
 
-
-
+noteInput{
+    
+}
