@@ -109,6 +109,7 @@ const twentyButton = document.getElementById('twenty'); //get 20 min button
 const thirtyButton = document.getElementById('thirty'); // get 30mnin button
 const startButton =document.getElementById('start'); //get start
 const stopButton = document.getElementById('stop'); //get stop button 
+const resetButton = document.getElementById('reset') //get reset button
 
 function updateTimer(time) {
     const minutes = Math.floor(time / 60); //calculate the minutes
@@ -153,4 +154,15 @@ function countPause() {
         interval = null; //reset the interval
     }
 }
+
+function countReset () { //function to reset count to 00:00
+    if (interval) { 
+        clearInterval(interval); //clear the interval (to stop counting)
+        interval = null; //reset the interval 
+        currentTime = 0*0; // set current time to 0
+        updateTimer(currentTime);//update timer
+    }
+}
+
+resetButton.addEventListener('click', countReset); //call function to reset timer to 00:00 when reset button is clicked 
 
