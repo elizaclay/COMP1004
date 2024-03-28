@@ -98,18 +98,20 @@ document.addEventListener('DOMContentLoaded', function() { //check dom has loade
     }
 });
 
-
 // Working with the countdown timer 
 let currentTime = 0; // current time in seconds
+let interval = 0; //initalise interval for counting down timer 
 
 const timerElement = document.getElementById('timer'); ///get the timer display 
 const tenButton = document.getElementById('ten'); //get 10 min button
 const twentyButton = document.getElementById('twenty'); //get 20 min button
 const thirtyButton = document.getElementById('thirty'); // get 30mnin button
+const startButton =document.getElementById('start'); //get start
 
 function updateTimer(time) {
     const minutes = Math.floor(time / 60); //calculate the minutes
-    timerElement.textContent = (minutes); //display minutes
+    const seconds = time % 60; //calculate the seconds 
+    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; //formatting to display in 00:00
 }
 
 tenButton.addEventListener('click', function() { //event listener for 10 min button
@@ -129,4 +131,14 @@ thirtyButton.addEventListener('click', function(){ //event listener for 30min bu
 
 });
 
+startButton.addEventListener('click', function(){
+    countDown(); //call countdown function when the start button is clicked 
+});
+
+function countDown() { //function for counting down seconds
+    setInterval(function() {
+            currentTime -= 1; //update current time by -1 
+            updateTimer(currentTime); //display new time by using updateTimer function
+    }, 1000); 
+}
 
