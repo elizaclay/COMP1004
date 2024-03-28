@@ -98,3 +98,35 @@ document.addEventListener('DOMContentLoaded', function() { //check dom has loade
     }
 });
 
+
+// Working with the countdown timer 
+let currentTime = 0; // current time in seconds
+
+const timerElement = document.getElementById('timer'); ///get the timer display 
+const tenButton = document.getElementById('ten'); //get 10 min button
+const twentyButton = document.getElementById('twenty'); //get 20 min button
+const thirtyButton = document.getElementById('thirty'); // get 30mnin button
+
+function updateTimer(time) {
+    const minutes = Math.floor(time / 60); //calculate the minutes
+    timerElement.textContent = (minutes); //display minutes
+}
+
+tenButton.addEventListener('click', function() { //event listener for 10 min button
+    currentTime = 10 * 60; //set current time to 10 mins
+    updateTimer(currentTime); //update the current time
+
+});
+
+twentyButton.addEventListener('click',function(){ //event listener for 20min button
+    currentTime = 20*60; //set current time to 20 mins
+    updateTimer(currentTime); //update the current time
+});
+
+thirtyButton.addEventListener('click', function(){ //event listener for 30min button
+    currentTime = 30*60; //set current time to 30mins
+    updateTimer(currentTime); //update current time
+
+});
+
+
