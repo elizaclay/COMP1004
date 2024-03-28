@@ -112,10 +112,19 @@
 
 .timer-container button {
   padding: 10px 20px;
+  margin-top: 10px;
   background-color: #6e8266; 
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer; 
+  width: 112px;
+}
+
+/* timer styling */
+
+.timertext{
+  font-size: 100px;
+  color: rgb(67, 64, 64);
 }
 
