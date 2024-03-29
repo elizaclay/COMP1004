@@ -29,7 +29,6 @@ function addTask() { // adds a user's task to the task-list if existing tasks do
 }
 }
 
-
 function clearTasks() {
   // Show confirmation pop up to warn the user
   var confirmClear = confirm("You are about to erase all tasks, are you sure you want to do this?"); //js pop up warning message
@@ -114,7 +113,7 @@ const resetButton = document.getElementById('reset') //get reset button
 function updateTimer(time) {
     const minutes = Math.floor(time / 60); //calculate the minutes
     const seconds = time % 60; //calculate the seconds 
-    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; //formatting to display in 00:00
+    timerElement.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; //formatting to show 00:00
 }
 
 tenButton.addEventListener('click', function() { //event listener for 10 min button
@@ -159,13 +158,11 @@ function countReset () { //function to reset count to 00:00
     if (interval) { 
         clearInterval(interval); //clear the interval (to stop counting)
         interval = null; //reset the interval 
-        currentTime = 0*0; // set current time to 0
+        currentTime = 0; // Set current time to 0
         updateTimer(currentTime);//update timer
     }
 }
 
 resetButton.addEventListener('click', countReset); //call function to reset timer to 00:00 when reset button is clicked 
 
-noteInput{
-    
-}
+
