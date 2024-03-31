@@ -40,42 +40,55 @@ function clearTasks() {
 }
 
 
-//event listener for save click on tasks
+//event listener for save click on tasks, used to set "type"
 document.getElementById('taskSave').addEventListener('click', function() {
     saveData('tasks');
 });
 
-//event listener for save click on notes 
+//event listener for save click on notes, used to set "type"
+document.getElementById('saveNotes').addEventListener('click', function() {
+    saveData('notes');
+});
 
 //New Save Data function for flexible use: 
-//Get the data from taskList OR NoteList 
+//Get the data from taskList OR NoteList, Type is set by event listeners and passed to function
 function saveData(type){
 
     //set empty array for use
-    var jsonData = []
+    var jsonData = []; 
+
+    var jsonDataType;
 
     //conditional logic for if the data is gathered from tasks or notes 
     if (type === "tasks"){
-    var jsonDataType = document.getElementById('taskList'); //if the type is tasks then gather data from "tasksList" and store 
-    }
-    else  
-    return;
+    jsonDataType = document.getElementById('taskList'); //if the type is tasks then gather data from "tasksList" and store 
 
-    for (var i = 0; i <jsonDataType.children.length; i++){ //itterate through task list as long as i is less than task list
-        var currentData = jsonDataType.children[i] //get the current task item
-        jsonData.push(currentData.textContent) //push collected task(s) to task array
- }
+
+      for (var i = 0; i <jsonDataType.children.length; i++){ //itterate through task list as long as i is less than task list
+        var currentData = jsonDataType.children[i]; //get the current task item and store in currentData
+        jsonData.push(currentData.textContent); //push collected task(s) to jsondata array to be used in download 
+      }
+
+    } 
+   
+    if (type === "notes") { //if the type is notes then gather data from "notesList" and store 
+
+        jsonDataType = document.getElementById('notesList').value; //get entire value of the text area(notesList) defined in html
+        jsonData.push(jsonDataType); //push to jsonData array to be used later, in download
+
+     }
  
- var dataJSON = JSON.stringify({ [type]: jsonData }); 
- var blob = new Blob([dataJSON], { type: "application/json" });
- var link = document.createElement("a");
- var url = URL.createObjectURL(blob);
- link.setAttribute("href", url);
- link.setAttribute("download", type + ".json"); 
- document.body.appendChild(link);
- link.click();
- document.body.removeChild(link); 
+ var dataJSON = JSON.stringify({ [type]: jsonData }); //convert data to json string and format 
+ var blob = new Blob([dataJSON], { type: "application/json" }); //create blob
+ var link = document.createElement("a"); //create anchor to be used in download
+ var url = URL.createObjectURL(blob); //generate url from the blob
+ link.setAttribute("href", url); //set href 
+ link.setAttribute("download", type + ".json");  //specifcy download and file type
+ document.body.appendChild(link); //temporarily store link 
+ link.click(); //download trigger
+ document.body.removeChild(link);  //remove link for efficiency 
 }
+
 
 // for uploading old tasks - **** needs more case handeling **** /file size/.json extension/format of file/check for exe 
 document.addEventListener('DOMContentLoaded', function() { //check dom has loaded before executing function
