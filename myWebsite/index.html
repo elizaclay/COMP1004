@@ -21,7 +21,7 @@
             <input type="text" class="button-style" id="taskInput" onkeydown="if(event.key === 'Enter'){ addTask(); }" placeholder="Enter your task" >
             <button type="button" class="button-style" onclick="addTask()">Add Task</button> 
             <button type = "button" class="button-style" onclick ="clearTasks()">Clear</button> 
-            <button type="button" button id ="taskSave" class="button-style" onclick="saveData()">Save Tasks</button> 
+            <button type="button" button id ="taskSave" class="button-style" >Save Tasks</button> 
 
             <button type = "button"> <label for="fileInput" class="button-style" >Load Tasks</label></button> <!--file input button-->
             <input type="file" id="fileInput" accept=".json" style="display: none;"> <!-- only accept json file-->
@@ -64,7 +64,7 @@
         <textarea id="notesList" placeholder="Type your notes here..."></textarea> <!--for writing notes-->
         
             <button class = "notesbuttons" id="importNotes">Import</button>
-            <button class = "notesbuttons" id ="saveNotes" onclick = "saveData()">Save</button>
+            <button class = "notesbuttons" id ="saveNotes" >Save</button>
         
     </div>
 </div>

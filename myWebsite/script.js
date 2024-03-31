@@ -40,19 +40,23 @@ function clearTasks() {
 }
 
 
-//event listener for save click on tasks, used to set "type"
-document.getElementById('taskSave').addEventListener('click', function() {
-    saveData('tasks');
-});
 
-//event listener for save click on notes, used to set "type"
-document.getElementById('saveNotes').addEventListener('click', function() {
-    saveData('notes');
-});
+        //event listener for save click on tasks, used to set "type"
+        document.getElementById('taskSave').addEventListener('click', function() {
+        saveData('tasks');
+        });
+
+        //event listener for save click on notes, used to set "type"
+        document.getElementById('saveNotes').addEventListener('click', function() {
+        saveData('notes'); 
+        });
+
+
 
 //New Save Data function for flexible use: 
 //Get the data from taskList OR NoteList, Type is set by event listeners and passed to function
 function saveData(type){
+    alert(`saveData called with type: ${type}`); // checking data type for error debugging 
 
     //set empty array for use
     var jsonData = []; 
@@ -60,13 +64,15 @@ function saveData(type){
     var jsonDataType;
 
     //conditional logic for if the data is gathered from tasks or notes 
+
+
     if (type === "tasks"){
     jsonDataType = document.getElementById('taskList'); //if the type is tasks then gather data from "tasksList" and store 
 
 
       for (var i = 0; i <jsonDataType.children.length; i++){ //itterate through task list as long as i is less than task list
-        var currentData = jsonDataType.children[i]; //get the current task item and store in currentData
-        jsonData.push(currentData.textContent); //push collected task(s) to jsondata array to be used in download 
+         var currentData = jsonDataType.children[i]; //get the current task item and store in currentData
+                jsonData.push(currentData.textContent); //push collected task(s) to jsondata array to be used in download 
       }
 
     } 
@@ -88,44 +94,6 @@ function saveData(type){
  link.click(); //download trigger
  document.body.removeChild(link);  //remove link for efficiency 
 }
-
-
-// for uploading old tasks - **** needs more case handeling **** /file size/.json extension/format of file/check for exe 
-document.addEventListener('DOMContentLoaded', function() { //check dom has loaded before executing function
-    document.getElementById('uploadButton').addEventListener('click', function() { //event listener; when upload button is clicked, trigger function
-        var fileInput = document.getElementById('fileInput'); //retrieve the file by its ID
-        var file = fileInput.files[0]; //retrieve the first file chosen by user
-
-        if (file) { 
-            var reader = new FileReader(); //file reader object, for reading content/tasks of the selected file
-            reader.onload = function(e) {
-                var content = e.target.result;
-                var tasks = JSON.parse(content).tasks; // extract the tasks array
-
-
-                displayTasks(tasks); //call function to add each task to the dom 
-            };
-            reader.readAsText(file); //read the file 
-        } else {
-            alert('Please select a file first!');
-        }
-    });
-
-    function displayTasks(tasksArray) { // call displaytasks function
-        const taskList = document.getElementById('taskList'); //get task list
-        taskList.innerHTML = ''; // clear existing tasks list before replacing with uploaded/old
-        tasksArray.forEach(task => {
-            const li = document.createElement('li');
-            li.textContent = task; 
-
-            var checkbox = document.createElement('input'); //create an input for check box
-            checkbox.type = 'checkbox'; //define input type as check box
-            checkbox.className = 'taskCheckbox';
-            li.appendChild(checkbox);  //append checkbox to each task
-            taskList.appendChild(li); 
-        });
-    }
-});
 
 // Working with the countdown timer 
 let currentTime = 0; // current time in seconds
