@@ -39,26 +39,43 @@ function clearTasks() {
 }
 }
 
-function saveTasks(){
-var confirmsave= confirm("You are about to save your to-do list to your desktop, are you sure you want to do this?"); //js pop up warning message
-var taskList = document.getElementById('taskList'); //get task list
-var tasks = [];  //empty array 
-for (var i = 0; i <taskList.children.length; i++){ //itterate through task list as long as i is less than task list
-  var currentTask = taskList.children[i] //get the current task item
-  tasks.push(currentTask.textContent) //push collected task(s) to task array
-  
-}
 
-var tasksJSON = JSON.stringify({ tasks: tasks }); //create object tasks and convert to json string format 
-var blob = new Blob([tasksJSON], { type: "application/json" }); //create blob to hold json data/ tasks
-var link = document.createElement("a"); //anchor for creating link 
-var url = URL.createObjectURL(blob);   //create url for blob
-link.setAttribute("href", url); //set href 
-link.setAttribute("download", "tasks.json");// set the file name for the download
-document.body.appendChild(link); //append link so it's clickable
-link.click(); //download trigger
-}
+//event listener for save click on tasks
+document.getElementById('taskSave').addEventListener('click', function() {
+    saveData('tasks');
+});
 
+//event listener for save click on notes 
+
+//New Save Data function for flexible use: 
+//Get the data from taskList OR NoteList 
+function saveData(type){
+
+    //set empty array for use
+    var jsonData = []
+
+    //conditional logic for if the data is gathered from tasks or notes 
+    if (type === "tasks"){
+    var jsonDataType = document.getElementById('taskList'); //if the type is tasks then gather data from "tasksList" and store 
+    }
+    else  
+    return;
+
+    for (var i = 0; i <jsonDataType.children.length; i++){ //itterate through task list as long as i is less than task list
+        var currentData = jsonDataType.children[i] //get the current task item
+        jsonData.push(currentData.textContent) //push collected task(s) to task array
+ }
+ 
+ var dataJSON = JSON.stringify({ [type]: jsonData }); 
+ var blob = new Blob([dataJSON], { type: "application/json" });
+ var link = document.createElement("a");
+ var url = URL.createObjectURL(blob);
+ link.setAttribute("href", url);
+ link.setAttribute("download", type + ".json"); 
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link); 
+}
 
 // for uploading old tasks - **** needs more case handeling **** /file size/.json extension/format of file/check for exe 
 document.addEventListener('DOMContentLoaded', function() { //check dom has loaded before executing function
@@ -164,5 +181,6 @@ function countReset () { //function to reset count to 00:00
 }
 
 resetButton.addEventListener('click', countReset); //call function to reset timer to 00:00 when reset button is clicked 
+
 
 
