@@ -39,9 +39,7 @@ function clearTasks() {
 }
 }
 
-
-
-        //event listener for save click on tasks, used to set "type"
+//event listener for save click on tasks, used to set "type"
         document.getElementById('taskSave').addEventListener('click', function() {
         saveData('tasks');
         });
@@ -50,8 +48,6 @@ function clearTasks() {
         document.getElementById('saveNotes').addEventListener('click', function() {
         saveData('notes'); 
         });
-
-
 
 //New Save Data function for flexible use: 
 //Get the data from taskList OR NoteList, Type is set by event listeners and passed to function
@@ -64,7 +60,6 @@ function saveData(type){
     var jsonDataType;
 
     //conditional logic for if the data is gathered from tasks or notes 
-
 
     if (type === "tasks"){
     jsonDataType = document.getElementById('taskList'); //if the type is tasks then gather data from "tasksList" and store 
@@ -137,6 +132,10 @@ startButton.addEventListener('click', function(){
 });
 
 function countDown() {  //function for counting down 
+    if(interval){ //check if an interval is already running
+        clearInterval(interval); // if an interval is already running clear it 
+    }
+    
     interval = setInterval(() => {  //set interval 
         currentTime -= 1; // -1 second to current time 
         updateTimer(currentTime); //update the time being displayed
