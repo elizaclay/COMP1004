@@ -91,8 +91,8 @@ function saveData(type){
 }
 
 // Working with the countdown timer 
-let currentTime = 0; // current time in seconds
-let interval = 0; //initalise interval for counting down timer 
+let currentTime = null; // current time in seconds
+let interval = null; //initalise interval for counting down timer 
 let timerRunning = false;
 
 const timerElement = document.getElementById('timer'); ///get the timer display 
@@ -135,7 +135,7 @@ function countDown() {  //function for counting down
     if(interval){ //check if an interval is already running
         clearInterval(interval); // if an interval is already running clear it 
     }
-    
+
     interval = setInterval(() => {  //set interval 
         currentTime -= 1; // -1 second to current time 
         updateTimer(currentTime); //update the time being displayed
@@ -152,12 +152,12 @@ function countPause() {
 }
 
 function countReset () { //function to reset count to 00:00
-    if (interval) { 
+   
         clearInterval(interval); //clear the interval (to stop counting)
         interval = null; //reset the interval 
         currentTime = 0; // Set current time to 0
         updateTimer(currentTime);//update timer
-    }
+    
 }
 
 resetButton.addEventListener('click', countReset); //call function to reset timer to 00:00 when reset button is clicked 
