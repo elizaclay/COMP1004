@@ -103,6 +103,8 @@ const startButton =document.getElementById('start'); //get start
 const stopButton = document.getElementById('stop'); //get stop button 
 const resetButton = document.getElementById('reset') //get reset button
 
+var timerEndSound = new Audio("520672__funzerker__birds.wav");
+
 function updateTimer(time) {
     const minutes = Math.floor(time / 60); //calculate the minutes
     const seconds = time % 60; //calculate the seconds 
@@ -110,7 +112,7 @@ function updateTimer(time) {
 }
 
 tenButton.addEventListener('click', function() { //event listener for 10 min button
-    currentTime = 10 * 60; //set current time to 10 mins
+    currentTime = 0.05 * 60; //set current time to 10 mins
     updateTimer(currentTime); //update the current time
 
 });
@@ -141,6 +143,12 @@ function countDown() {  //function for counting down
         if (currentTime <=0){ //if the time is less than or equal to 0 
             clearInterval(interval) //clear the interval
             countReset() //call function to set timer back to 00:00 
+            timerEndSound.play();
+            var endSession = confirm ("Time's up! Please reset the timer if you wish to continue studying") //js pop up awaiting user confirmation
+        }
+        if (endSession){ //if user clicks ok 
+            timerEndSound.pause(); //pause sound
+            timerEndSound.currentTime = 0; //reset sound to 0 (start of sound)
         }
         updateTimer(currentTime); //update the time being displayed
     }, 1000); // repeat this function every second 
