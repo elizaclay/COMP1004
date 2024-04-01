@@ -22,7 +22,7 @@
             <button type="button" class="button-style" onclick="addTask()">Add Task</button> 
             <button type = "button" class="button-style" onclick ="clearTasks()">Clear</button> 
             <button type="button" button id ="taskSave" class="button-style" >Save Tasks</button> 
-            <button type = "button" button id ="taskUpload"> <label for="fileInput" class="button-style" >Load Tasks</label></button> <!--file input button-->
+            <button type = "button" button id ="taskUpload" class="button-style">Load Tasks</button> <!--file input button-->
             <input type="file" id="fileInput" accept=".json" style="display: none;"> <!-- only accept json file-->
                    
         </div>
@@ -61,11 +61,13 @@
     <div class =" grid-item box4">
         <textarea id="notesList" placeholder="Type your notes here..."></textarea> <!--for writing notes-->
         
-            <button class = "notesbuttons" id="notesUpload">Upload</button>
+            <button type = "button" button class = "notesbuttons" button id ="notesUpload" class="button-style">Upload</button> <!--file input button-->
             <button class = "notesbuttons" id ="saveNotes" >Save</button>
         
     </div>
 </div>
+
+
 
 <script src="script.js"></script>
 </body>

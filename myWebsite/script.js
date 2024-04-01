@@ -90,6 +90,79 @@ function saveData(type){
  document.body.removeChild(link);  //remove link for efficiency 
 }
 
+// Attach change event listener to file input for handling file uploads
+document.getElementById('fileInput').addEventListener('change', function() {
+    var file = fileInput.files[0]; //get the first file from the file input
+
+    if (file) { //if a file has been selected 
+        var reader = new FileReader(); //create a file reader object 
+        reader.onload = function(loadEvent) { //onload event listener to check when the file has been read 
+            var content = loadEvent.target.result; // retreives the contents of the file 
+            try {
+                var uploads = JSON.parse(content); //parse json file 
+
+                if (uploads.tasks) { //if the upload is tasks, determined via content structure/formatting
+
+                    displayTasks(uploads.tasks); //call display tasks function to display tasks 
+                }
+                if (uploads.notes) { //if the upload is tasks, determined via content structure/formatting
+                    displayNotes(uploads.notes); //call displayNotes function to display notes 
+                }
+            } catch (error) {
+                console.error("Error parsing JSON:", error); //if the preceeding failed throw an error 
+                alert('Error parsing uploaded file.'); //error message as js alert 
+            }
+        };
+        reader.readAsText(file); //start reading file as text string
+    } else {
+        alert('Please select a file first!'); // if no file was selected show message using js alert 
+    }
+});
+
+
+document.getElementById('taskUpload').addEventListener('click', function() { //event listener for taksk upload button
+    document.getElementById('fileInput').click(); 
+});
+ 
+document.getElementById('notesUpload').addEventListener('click', function() { //event listener for notesupload button
+    document.getElementById('fileInput').click();
+});
+
+
+function displayTasks(tasks) { //function with tasks from file passed to it
+    const taskList = document.getElementById('taskList'); //get the task list before clearing it
+    taskList.innerHTML = ''; //clear the task list before uploading the tasks from json
+
+    tasks.forEach(task => { //for each task extracted do the following
+        const li = document.createElement('li'); //create element in list 
+        li.textContent = task; // each element of the list is a task
+
+        const checkbox = document.createElement('input'); //create input type 
+        checkbox.type = 'checkbox'; //set type to checkbox
+        checkbox.className = 'taskCheckbox'; //set class name for styling
+
+        checkbox.addEventListener('change', function() { //detect change in input state (checked or unchecked box)
+            if (checkbox.checked) { //if the box is checked ..
+                li.classList.add('linethrough');  //add line through, css (cross out)
+                                setTimeout(function() {
+                    li.remove();  // remove task.. after 3milliseconds, for smoothness 
+                }, 300);
+
+            } 
+        });
+
+        taskList.appendChild(li); //append task to list 
+        li.appendChild(checkbox); //append checkbox to task
+    });
+}
+
+function displayNotes(notes) { //function with notes from file passed to it
+
+    const notesList = document.getElementById('notesList'); //get the notes list element where the notes will be uploaded and displaued 
+    const allNotes = notes; //add all elements of notes (array) into one string called "allNotes"
+    notesList.value = allNotes; //overwrite notesList value with the elements that have been added to allNotes 
+}
+
 // Working with the countdown timer 
 let currentTime = null; // current time in seconds
 let interval = null; //initalise interval for counting down timer 
@@ -103,7 +176,7 @@ const startButton =document.getElementById('start'); //get start
 const stopButton = document.getElementById('stop'); //get stop button 
 const resetButton = document.getElementById('reset') //get reset button
 
-var timerEndSound = new Audio("520672__funzerker__birds.wav");
+var timerEndSound = new Audio("520672__funzerker__birds.wav"); //audio to be used when the timer ends -- need to remember to reference this !! 
 
 function updateTimer(time) {
     const minutes = Math.floor(time / 60); //calculate the minutes
@@ -172,6 +245,4 @@ function countReset () { //function to reset count to 00:00
     
 }
 resetButton.addEventListener('click', countReset); //call function to reset timer to 00:00 when reset button is clicked 
-
-
 
