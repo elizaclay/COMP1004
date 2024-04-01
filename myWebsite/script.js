@@ -138,6 +138,10 @@ function countDown() {  //function for counting down
 
     interval = setInterval(() => {  //set interval 
         currentTime -= 1; // -1 second to current time 
+        if (currentTime <=0){ //if the time is less than or equal to 0 
+            clearInterval(interval) //clear the interval
+            countReset() //call function to set timer back to 00:00 
+        }
         updateTimer(currentTime); //update the time being displayed
     }, 1000); // repeat this function every second 
 }
@@ -152,14 +156,13 @@ function countPause() {
 }
 
 function countReset () { //function to reset count to 00:00
-   
+    
         clearInterval(interval); //clear the interval (to stop counting)
         interval = null; //reset the interval 
         currentTime = 0; // Set current time to 0
         updateTimer(currentTime);//update timer
     
 }
-
 resetButton.addEventListener('click', countReset); //call function to reset timer to 00:00 when reset button is clicked 
 
 
