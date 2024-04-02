@@ -1,146 +1,34 @@
   
- /* remove any default browser styling*/
+ /* remove any default browser styling to avoid clashes*/
 *{
   margin: 0;
   padding: 0;
   box-sizing: 0;
 }
-
- body {
-    font-family: 'Montserrat', sans-serif; 
-    background-color: #f4f4f4;
-  }
-  
-  header {
-    background-color: #6e8266;
-    padding: 20px;
-    text-align: center;
-    font-size: 25px;
-    color: white;
-  }
-  
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr 1fr; 
-    gap: 10px; 
-    flex-grow: 1; 
-    box-sizing: border-box; 
-  }
-  
-  .grid-item {
-    border: 1px solid #ccc;
-    padding: 30px;
-    display: flex;
-    border-radius: 10px 10px 10px 10px;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1; 
-  }
-  
-  .todobox {
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-between; 
-    align-items: flex-start; 
-    padding: 20px;
-    background-color: #ffffff; 
-    border: 1px solid #ddd;
-    gap: 10px; 
-  }
-
-  #taskList li {
-    padding: 5px; 
-    padding-top: 5px;
-    list-style-type: none; 
-    cursor: pointer; 
-    margin-right: 200px;
-  }
-   
-#todoForm {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start; 
+ 
+/*main body styling*/
+body {
+  font-family: 'Montserrat', sans-serif; /*font for website*/
+  background-color: #f4f4f4; /*background color*/
+}
+/*header-banner styling*/
+header {
+  background-color: #819778; /*green background colour*/
+  padding: 20px; 
+  text-align: center; /*align the text to centre to make a banner*/
+  font-size: 25px; 
+  color: white; /*text colour*/
 }
 
-#taskInput {
-  padding: 10px;
-  font-size: 16px; 
-  border: 1px solid #ddd;
-  border-radius: 4px; 
-}
-
-#todoForm button {
-  padding: 10px;
-  width: 215px;
-  background-color: #6e8266; 
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer; 
-}
-
-#todoForm button:hover {
-  background-color: #5d6e5a; 
-}
-
-#clearButton { 
-  margin-top: 10px; 
-}
-
-.fileInputLabel {
-  margin-top: 10px; 
-}
-
-.fileInputLabel:hover {
-  background-color: #5d6e5a; 
-}
-
-.linethrough{
-  text-decoration: line-through;
-  color: #999; 
+/*footer styling*/
+footer{
+  background-color: #f4f4f4; /*light grey background*/
+  color: #333; /*dark grey font*/
+  padding: 20px 0; /* 20px padding on the top and bottom*/
+  border-top: 1px solid #e4e4e4; /*light grey border on the top*/
 }
 
 
-.timer-container button {
-  padding: 10px 20px;
-  margin-top: 10px;
-  background-color: #6e8266; 
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer; 
-  width: 112px;
-}
 
-/* timer text styling */
 
-.timertext{
-  font-size: 100px;
-  color: rgb(67, 64, 64);
-}
-
-/* styling for notes section */
-#notesList {
-  resize: none;
-  padding: 5px;
-  width: 100%;
-  height: 100%;
-  font-family: 'Montserrat', sans-serif; 
-  outline: none;  
-  border-color: white;
-  font-size: 16px;
-}
-
-.notesbuttons{
-  padding: 10px 20px;
-  margin-top: 10px;
-  background-color: #6e8266; 
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer; 
-  width: 112px; 
-}
 

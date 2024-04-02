@@ -40,14 +40,14 @@ function clearTasks() {
 }
 
 //event listener for save click on tasks, used to set "type"
-        document.getElementById('taskSave').addEventListener('click', function() {
-        saveData('tasks');
-        });
+document.getElementById('taskSave').addEventListener('click', function() {
+saveData('tasks');
+});
 
-        //event listener for save click on notes, used to set "type"
-        document.getElementById('saveNotes').addEventListener('click', function() {
-        saveData('notes'); 
-        });
+//event listener for save click on notes, used to set "type"
+document.getElementById('saveNotes').addEventListener('click', function() {
+saveData('notes'); 
+});
 
 //New Save Data function for flexible use: 
 //Get the data from taskList OR NoteList, Type is set by event listeners and passed to function
