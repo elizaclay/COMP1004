@@ -5,12 +5,15 @@
   padding: 0;
   box-sizing: 0;
 }
- 
-/*main body styling*/
-body {
+
+body, html {
   font-family: 'Montserrat', sans-serif; /*font for website*/
   background-color: #f4f4f4; /*background color*/
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
+
 /*header-banner styling*/
 header {
   background-color: #819778; /*green background colour*/
@@ -28,7 +31,27 @@ footer{
   border-top: 1px solid #e4e4e4; /*light grey border on the top*/
 }
 
+/*container for elements of page*/
+.container { 
+  display: flex;
+  height: 100%;
+}
 
+/*styling for left side of the page*/
+.left { 
+  width: 50%; 
+  background-color: pink;
+}
 
+/*styling for right side of the page*/
+.right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: green;
+}
 
-
+/*styling for elements within right side of the page*/
+.timerBox, .notesBox {
+  height: 50%; /*right hand side is split in 2 halves*/
+}

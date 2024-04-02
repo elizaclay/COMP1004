@@ -14,28 +14,20 @@
 <header>
     <h1>Study Buddy</h1> <!--website banner-->
 </header>
-<div class="grid-container">
-    <div class ="grid-item todobox"> <!--container for to do list-->
-          <!-- TO DO LIST ELEMENTS -->
-          <div id="todoForm">
-            <input type="text" class="button-style" id="taskInput" onkeydown="if(event.key === 'Enter'){ addTask(); }" placeholder="Enter your task" >
-            <button type="button" class="button-style" onclick="addTask()">Add Task</button> 
-            <button type = "button" class="button-style" onclick ="clearTasks()">Clear</button> 
-            <button type="button" button id ="taskSave" class="button-style" >Save Tasks</button> 
-            <button type = "button" button id ="taskUpload" class="button-style">Load Tasks</button> <!--file input button-->
-            <input type="file" id="fileInput" accept=".json" style="display: none;"> <!-- only accept json file-->
-                   
-        </div>
-        <div class="myList">
-            <ul id="taskList">
+<div class="container">
+    <div class="left">
+        <input type="text" class="button-style" id="taskInput" onkeydown="if(event.key === 'Enter'){ addTask(); }" placeholder="Enter your task" >
+        <button type="button" class="button-style" onclick="addTask()">Add Task</button> 
+        <button type = "button" class="button-style" onclick ="clearTasks()">Clear</button> 
+        <button type="button" button id ="taskSave" class="button-style" >Save Tasks</button> 
+        <button type = "button" button id ="taskUpload" class="button-style">Load Tasks</button> <!--file input button-->
+        <input type="file" id="fileInput" accept=".json" style="display: none;"> <!-- only accept json file-->
+    </div>
 
-            </ul>
-        </div>  
-      </div>
 
-    <div class ="grid-item box2">
-        <div class="timer-container">
-            <div class ="toptimebuttons">
+    <div class="right"> <!--new class for right hand side elements -->
+        <div class="timerBox"> <!--div to hold all elements of timer-->
+            <div class ="toptimebuttons"> <!--div to separate top buttons from bottom buttons-->
                 <button id="ten">10</button>
                 <button id="twenty">20</button>
                 <button id ="thirty">30</button>
@@ -43,31 +35,26 @@
 
             <div id="timer" class="timertext">00:00</div>
 
-            <div class = "bottomtimebottoms"> 
+            <div class = "bottomtimebottoms">  <!--div to separate bottom buttons from top buttons-->
             <button id="start">Start</button>
             <button id="stop">Stop</button>
             <button id="reset">Reset</button>
         </div>
-
         </div>
-
-    </div>
-
-                             
-    <div class ="grid-item box3">
        
-    </div>
-
-    <div class =" grid-item box4">
-        <textarea id="notesList" placeholder="Type your notes here..."></textarea> <!--for writing notes-->
-        
+        <div class="notesBox"> <!--div to hold note taking elements-->
+            <textarea id="notesList" placeholder="Type your notes here..."></textarea> <!--for writing notes-->
+    
             <button type = "button" button class = "notesbuttons" button id ="notesUpload" class="button-style">Upload</button> <!--file input button-->
             <button class = "notesbuttons" id ="saveNotes" >Save</button>
-        
+
+        </div>
     </div>
 </div>
 
-<footer></footer>
+<footer>
+
+</footer>
 
 
 
