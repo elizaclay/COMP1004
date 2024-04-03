@@ -1,12 +1,12 @@
   
  /* remove any default browser styling to avoid clashes*/
-*{
+ *{
   margin: 0;
   padding: 0;
   box-sizing: 0;
 }
 
-body, html {
+body{
   font-family: 'Montserrat', sans-serif; /*font for website*/
   background-color: #f4f4f4; /*background color*/
   margin: 0;
@@ -31,27 +31,153 @@ footer{
   border-top: 1px solid #e4e4e4; /*light grey border on the top*/
 }
 
-/*container for elements of page*/
-.container { 
+/* !! button style */
+.buttonStyle {
+  padding: 10px;
+  width: 215px;
+  background-color: #6e8266;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor:pointer; /*make the cursor point when over a button*/
+}
+
+
+/*STYLING FOR TO DO LIST HERE */
+
+/*outer container, keep in grid format*/
+.todoBox {
   display: flex;
-  height: 100%;
-}
-
-/*styling for left side of the page*/
-.left { 
-  width: 50%; 
-  background-color: pink;
-}
-
-/*styling for right side of the page*/
-.right {
+  justify-content: center; /*center horizontally*/
+  align-items: center; /*center vertically */
   width: 50%;
+  height: 50vh; /*viewport height */
+  float: left; 
+  background-color: pink; /*remove after developement*/
+}
+
+/*inner container*/
+.todoElements{
+  display: flex;
+  flex-direction: column; /*stack elements in column*/
+  align-items: center; /* center elements horizontally*/
+  justify-content: center; 
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width:95%; /*width of its parent todoBox*/
+  height:95%; /*height of its parent todoBox*/
+  outline-color: black;
+}
+
+/*order of buttons in todobox*/
+.buttonOrder {
+  display: flex;
+  flex-direction: column; /*buttons in vertical column*/
+  align-items: center; /*center buttons*/
+  gap: 10px; /*space between buttons*/
+}
+
+/*user task input for to do list*/
+#taskInput {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/*!!!!!!!!!!LIST STYLING HERE!!!!!!!!!!!!!!!!!!! */
+
+/*outer container, keep in grid format*/
+.listBox {
+  display: flex;
+  justify-content: center; /*center horizontally*/
+  align-items: center; /*center vertically*/
+  width: 50%;
+  height: 50vh; /*viewport height */
+  float: left; 
+  background-color: blue; /*remove after development */
+}
+
+/*inner container*/
+.listElements{
+  display: flex;
+  flex-direction: column; /*stack li children in column*/
+  align-items: center; /*centre in container*/
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width:95%; /*width of its parent listBox*/
+  height:95%;/*width of its parent listBox*/
+  outline-color: black;
+}
+
+/*task list styling*/
+#taskList {
+  list-style: none; /* Remove default list styling */
+  padding-left: 0; /* Remove default list padding */
+}
+
+/*tasklist li styling, born of the to do list input*/
+#taskList li {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 10px; /* Space between tasks */
+}
+
+/* !!!!!!!!! TIMER STYLING HERE !!!!!!!!!! */
+
+/*outer container, keep in grid format*/
+.timerBox {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  width: 50%;
+  height: 50vh; /*viewport height */
+  float: right; 
+  background-color: yellow; /* remove after development*/
+}
+
+/*inner container*/
+.timerElements{
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width:95%; /*width of its parent timerBox*/
+  height:95%; /*height of its parent timerBox*/
+  outline-color: black;
+}
+
+
+/*!!!!!!!!!!!!! NOTES STYLING HERE !!!!*/
+
+/*outer container, keep in grid format*/
+.notesBox {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  width: 50%;
+  height: 50vh; 
+  float: right; 
+  background-color: green; /*remove after development*/
+}
+
+/*inner container*/
+.notesElements{
   display: flex;
   flex-direction: column;
-  background-color: green;
+  align-items: center; 
+  justify-content: center; 
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width:95%; /*width of its parent notesBox*/
+  height:95%; /*height of its parent notesBox*/
+  outline-color: black;
 }
 
-/*styling for elements within right side of the page*/
-.timerBox, .notesBox {
-  height: 50%; /*right hand side is split in 2 halves*/
-}

@@ -15,18 +15,32 @@
     <h1>Study Buddy</h1> <!--website banner-->
 </header>
 <div class="container">
-    <div class="left">
-        <input type="text" class="button-style" id="taskInput" onkeydown="if(event.key === 'Enter'){ addTask(); }" placeholder="Enter your task" >
-        <button type="button" class="button-style" onclick="addTask()">Add Task</button> 
-        <button type = "button" class="button-style" onclick ="clearTasks()">Clear</button> 
-        <button type="button" button id ="taskSave" class="button-style" >Save Tasks</button> 
-        <button type = "button" button id ="taskUpload" class="button-style">Load Tasks</button> <!--file input button-->
+    <div class="todoBox">
+        <div class ="todoElements">
+        <input type="text" id="taskInput" onkeydown="if(event.key === 'Enter'){ addTazk(); }" placeholder="Enter your task" >
+        <div class = buttonOrder> 
+        <button type="button" class="buttonStyle" onclick="addTask()">Add Task</button> 
+        <button type = "button" class="buttonStyle" onclick ="clearTasks()">Clear</button> 
+        <button type="button" class="buttonStyle" button id ="taskSave" class="button-style" >Save Tasks</button> 
+        <button type = "button"class ="buttonStyle" button id ="taskUpload" class="button-style">Load Tasks</button> <!--file input button-->
         <input type="file" id="fileInput" accept=".json" style="display: none;"> <!-- only accept json file-->
     </div>
+    </div>
+</div>
+
+    <div class="listBox">
+        <div class ="listElements">
+        <ul id="taskList">
+        </ul>
+    </div>  
+  </div>
+</div>
 
 
+    
     <div class="right"> <!--new class for right hand side elements -->
         <div class="timerBox"> <!--div to hold all elements of timer-->
+            <div class ="timerElements">
             <div class ="toptimebuttons"> <!--div to separate top buttons from bottom buttons-->
                 <button id="ten">10</button>
                 <button id="twenty">20</button>
@@ -41,8 +55,10 @@
             <button id="reset">Reset</button>
         </div>
         </div>
+    </div>
        
         <div class="notesBox"> <!--div to hold note taking elements-->
+            <div class="notesElements">
             <textarea id="notesList" placeholder="Type your notes here..."></textarea> <!--for writing notes-->
     
             <button type = "button" button class = "notesbuttons" button id ="notesUpload" class="button-style">Upload</button> <!--file input button-->
@@ -50,6 +66,7 @@
 
         </div>
     </div>
+</div>
 </div>
 
 <footer>
@@ -61,4 +78,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-

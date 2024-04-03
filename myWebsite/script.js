@@ -1,4 +1,43 @@
-function addTask() { // adds a user's task to the task-list if existing tasks does not exceed limit
+
+//new add tasks function, checkbox appends before task 
+function addTazk() {
+    var taskInput = document.getElementById('taskInput');  // get the user text input 
+    var taskList = document.getElementById('taskList'); // get the list
+    var maxNum = 6; //maximum number of tasks
+
+    if (taskInput.value.trim() !== '' && taskList.children.length < maxNum) {  //If the input is not empty and tasks do not exceed max value, add task to list
+        
+        var li = document.createElement('li'); //create a new list item
+
+        var checkboxDiv = document.createElement('div');
+        checkboxDiv.className = 'checkboxContainer'; //class for checkboxdiv
+        var checkbox = document.createElement('input'); //create input 
+        checkbox.type = 'checkbox'; //set input type to checkbox
+        checkbox.className = 'taskCheckbox'; 
+
+        checkboxDiv.appendChild(checkbox); //append checckbox
+        var taskTextSpan = document.createElement('span'); //span element to hold tasks 
+        taskTextSpan.className = 'taskText'; 
+        taskTextSpan.textContent = taskInput.value; //whatever has been written into the input
+        li.appendChild(checkboxDiv);
+        li.appendChild(taskTextSpan);
+        taskList.appendChild(li);
+        taskInput.value = ''; //clear the input box after task is added 
+
+        checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+                li.style.textDecoration = 'line-through'; //use css linethrough to cross out task
+                setTimeout(function() {
+                    li.remove(); //remove task ..... 
+                }, 300);  // ..after 3 milliseconds
+            }
+        });
+    }
+}
+
+
+
+/*function addTask() { // adds a user's task to the task-list if existing tasks does not exceed limit
     var taskInput = document.getElementById('taskInput'); // get the user text input 
     var taskList = document.getElementById('taskList'); // get the list
     var maxNum = 6; //maximum number of tasks
@@ -27,7 +66,7 @@ function addTask() { // adds a user's task to the task-list if existing tasks do
         });
         
 }
-}
+}*/
 
 function clearTasks() {
   // Show confirmation pop up to warn the user
