@@ -16,11 +16,11 @@ body{
 
 /*header-banner styling*/
 header {
-  background-color: #819778; /*green background colour*/
+  background-color: #253367; 
   padding: 20px; 
   text-align: center; /*align the text to centre to make a banner*/
   font-size: 25px; 
-  color: white; /*text colour*/
+  color: white;
 }
 
 /*footer styling*/
@@ -35,7 +35,7 @@ footer{
 .buttonStyle {
   padding: 10px;
   width: 215px;
-  background-color: #6e8266;
+  background-color: #364370; 
   color: white;
   border: none;
   border-radius: 4px;
@@ -53,7 +53,7 @@ footer{
   width: 50%;
   height: 50vh; /*viewport height */
   float: left; 
-  background-color: pink; /*remove after developement*/
+  background-color: #253367; 
 }
 
 /*inner container*/
@@ -65,13 +65,16 @@ footer{
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  width:95%; /*width of its parent todoBox*/
-  height:95%; /*height of its parent todoBox*/
+  width:80%; /*width of its parent todoBox*/
+  height:80%; /*height of its parent todoBox*/
   outline-color: black;
+  margin-left: 15%;
+  margin-right: 5%;
 }
 
 /*order of buttons in todobox*/
 .buttonOrder {
+  margin-top: 10px;
   display: flex;
   flex-direction: column; /*buttons in vertical column*/
   align-items: center; /*center buttons*/
@@ -86,6 +89,12 @@ footer{
   border-radius: 4px;
 }
 
+.linethrough{
+  text-decoration: line-through;
+  color: #999;
+}
+
+
 /*!!!!!!!!!!LIST STYLING HERE!!!!!!!!!!!!!!!!!!! */
 
 /*outer container, keep in grid format*/
@@ -96,7 +105,7 @@ footer{
   width: 50%;
   height: 50vh; /*viewport height */
   float: left; 
-  background-color: blue; /*remove after development */
+  background-color: #253367; 
 }
 
 /*inner container*/
@@ -108,9 +117,11 @@ footer{
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  width:95%; /*width of its parent listBox*/
-  height:95%;/*width of its parent listBox*/
+  width:80%; /*width of its parent listBox*/
+  height:80%;/*width of its parent listBox*/
   outline-color: black;
+  margin-right: 15%;
+  margin-left: 5%;
 }
 
 /*task list styling*/
@@ -136,7 +147,7 @@ footer{
   width: 50%;
   height: 50vh; /*viewport height */
   float: right; 
-  background-color: yellow; /* remove after development*/
+  background-color: #253367; 
 }
 
 /*inner container*/
@@ -148,9 +159,27 @@ footer{
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  width:95%; /*width of its parent timerBox*/
-  height:95%; /*height of its parent timerBox*/
+  width:80%; /*width of its parent timerBox*/
+  height:80%; /*height of its parent timerBox*/
   outline-color: black;
+  margin-right:15%;
+  margin-left: 5%;
+}
+
+.timerBox button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #364370;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 112px;
+}
+
+.timertext{
+  font-size: 100px;
+  color: rgb(67, 64, 64);
 }
 
 
@@ -159,12 +188,13 @@ footer{
 /*outer container, keep in grid format*/
 .notesBox {
   display: flex;
+  flex-direction:row;
   justify-content: center; 
   align-items: center; 
   width: 50%;
   height: 50vh; 
   float: right; 
-  background-color: green; /*remove after development*/
+  background-color: #253367; 
 }
 
 /*inner container*/
@@ -176,8 +206,48 @@ footer{
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  width:95%; /*width of its parent notesBox*/
-  height:95%; /*height of its parent notesBox*/
+  width:80%; /*width of its parent notesBox*/
+  height:80%; /*height of its parent notesBox*/
   outline-color: black;
+  margin-left:15%;
+  margin-right: 5%;
+}
+
+#notesList {
+  margin-top: 10px;
+  resize: none;
+  padding: 5px;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;  
+  border-color: white;
+  font-size: 16px;
+  width: 95%;
+  height: 80%;
+}
+
+.notesbuttons{
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #364370;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 112px;
+  flex-direction: row; /*buttons in vertical column*/
+  
+}
+
+.notesOrder{
+  display: flex;
+  flex-direction: row; 
+  justify-content: center; 
+  align-items: center; 
+  width: 100%; 
+  padding: 10px 0;
+  gap: 10px;
+  float: right;
+  justify-content: flex-end;
+  margin-right: 15px;
 }
 

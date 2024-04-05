@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"> <!--for font library-->
-    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="notes.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
@@ -50,7 +51,7 @@
             <div id="timer" class="timertext">00:00</div>
 
             <div class = "bottomtimebottoms">  <!--div to separate bottom buttons from top buttons-->
-            <button id="start">Start</button>
+            <button id="start" >Start</button>
             <button id="stop">Stop</button>
             <button id="reset">Reset</button>
         </div>
@@ -61,8 +62,11 @@
             <div class="notesElements">
             <textarea id="notesList" placeholder="Type your notes here..."></textarea> <!--for writing notes-->
     
+
+            <div class ="notesOrder">
             <button type = "button" button class = "notesbuttons" button id ="notesUpload" class="button-style">Upload</button> <!--file input button-->
             <button class = "notesbuttons" id ="saveNotes" >Save</button>
+        </div>
 
         </div>
     </div>
