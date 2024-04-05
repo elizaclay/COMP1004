@@ -1,84 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"> <!--for font library-->
-   <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="notes.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-    <title>Study Buddy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Study Buddy</title>
 
 </head>
 <body>
 
-<header>
-    <h1>Study Buddy</h1> <!--website banner-->
-</header>
-<div class="container">
-    <div class="todoBox">
-        <div class ="todoElements">
-        <input type="text" id="taskInput" onkeydown="if(event.key === 'Enter'){ addTazk(); }" placeholder="Enter your task" >
-        <div class = buttonOrder> 
-        <button type="button" class="buttonStyle" onclick="addTask()">Add Task</button> 
-        <button type = "button" class="buttonStyle" onclick ="clearTasks()">Clear</button> 
-        <button type="button" class="buttonStyle" button id ="taskSave" class="button-style" >Save Tasks</button> 
-        <button type = "button"class ="buttonStyle" button id ="taskUpload" class="button-style">Load Tasks</button> <!--file input button-->
-        <input type="file" id="fileInput" accept=".json" style="display: none;"> <!-- only accept json file-->
-    </div>
-    </div>
-</div>
+    <header>
+        <h1>Study Buddy</h1> <!--website banner-->
+    </header>
+    <div class="grid-container">
+        <div class="row">
 
-    <div class="listBox">
-        <div class ="listElements">
-        <ul id="taskList">
-        </ul>
-    </div>  
-  </div>
-</div>
+            <!--To do list-->
+          <div class="grid-item">
+              <div class = buttonOrder> 
+                <input type="text" id="taskInput" onkeydown="if(event.key === 'Enter'){ addTazk(); }" placeholder="Enter your task" >
+                <button type="button" class="buttonStyle" onclick="addTask()">Add</button> 
+                <button type = "button" class="buttonStyle" onclick ="clearTasks()">Clear</button> 
+                <button type="button" class="buttonStyle" button id ="taskSave" class="button-style" >Save</button> 
+                <button type = "button"class ="buttonStyle" button id ="taskUpload" class="button-style">Load</button> <!--file input button-->
+                <input type="file" id="fileInput" accept=".json" style="display: none;"> <!-- only accept json file-->
+            </div>
+          </div>
+
+<!--TO DO LIST CHILDREN-->
+          <div class="grid-item">
+            <div class="listBox">
+                <div class ="listElements">
+                <ul id="taskList">
+                </ul>
+            </div>  
+        </div>
+<!------------------------------------------------------------------->
+          </div>
+        </div>
 
 
+        <div class="row">
+<!--NOTE TAKING------------------------------------------------------->
+          <div class="grid-item">
+            <div class ="notesElements">
+              <div class = "notesTextArea">
+                <textarea id="notesList" placeholder="Type your notes here..."></textarea> <!--for writing notes-->
+              </div>
+
+                <div class ="notesButtons">
+                <button type = "button" button class = "buttonStyle" button id ="notesUpload" class="button-style">Upload</button> <!--file input button-->
+                <button class = "buttonStyle" id ="saveNotes" >Save</button>
+              </div>
+            </div>
+          </div>
+<!-----TIMER SECTION--------------------------------------------------------------->
+          <div class="grid-item">
+                <div class ="timerElements">
+                  <div class ="topTimeButtons"> <!--div to separate top buttons from bottom buttons-->
+                    <button id="ten" class ="buttonStyle">10</button>
+                    <button id="twenty" class ="buttonStyle">20</button>
+                    <button id ="thirty" class ="buttonStyle">30</button>
+                </div>
     
-    <div class="right"> <!--new class for right hand side elements -->
-        <div class="timerBox"> <!--div to hold all elements of timer-->
-            <div class ="timerElements">
-            <div class ="toptimebuttons"> <!--div to separate top buttons from bottom buttons-->
-                <button id="ten">10</button>
-                <button id="twenty">20</button>
-                <button id ="thirty">30</button>
+                <div id="timer" class="timerText">00:00</div>
+                <div class = "bottomTimeButtons">  <!--div to separate bottom buttons from top buttons-->
+                <button id="start"class ="buttonStyle" >Start</button>
+                <button id="stop"class ="buttonStyle">Stop</button>
+                <button id="reset"class ="buttonStyle">Reset</button>
             </div>
 
-            <div id="timer" class="timertext">00:00</div>
 
-            <div class = "bottomtimebottoms">  <!--div to separate bottom buttons from top buttons-->
-            <button id="start" >Start</button>
-            <button id="stop">Stop</button>
-            <button id="reset">Reset</button>
+          </div>
         </div>
-        </div>
-    </div>
-       
-        <div class="notesBox"> <!--div to hold note taking elements-->
-            <div class="notesElements">
-            <textarea id="notesList" placeholder="Type your notes here..."></textarea> <!--for writing notes-->
-    
-
-            <div class ="notesOrder">
-            <button type = "button" button class = "notesbuttons" button id ="notesUpload" class="button-style">Upload</button> <!--file input button-->
-            <button class = "notesbuttons" id ="saveNotes" >Save</button>
-        </div>
-
-        </div>
-    </div>
-</div>
-</div>
-
-<footer>
-
-</footer>
-
-
-
-<script src="script.js"></script>
+<!-------------------------------------------------------------------->
+      </div>
+      
+      <script src="script.js"></script>
 </body>
 </html>

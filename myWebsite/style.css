@@ -1,253 +1,183 @@
-  
- /* remove any default browser styling to avoid clashes*/
- *{
-  margin: 0;
-  padding: 0;
-  box-sizing: 0;
+/************************************************* GENERAL WEBSITE STUFF ***************************************************/
+/* Styling for body, applies to whole website*/
+body {
+  font-family: 'Montserrat', sans-serif; /*font set for entire website*/
+  background-color: #253367; 
+  margin: 0; /*content has no padding*/
+  padding: 0; /*content has no padding*/
+  height: 100%; /*takes up all space available*/
 }
 
-body{
-  font-family: 'Montserrat', sans-serif; /*font for website*/
-  background-color: #f4f4f4; /*background color*/
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-/*header-banner styling*/
+/*Header, styles the website banner*/
 header {
   background-color: #253367; 
-  padding: 20px; 
-  text-align: center; /*align the text to centre to make a banner*/
-  font-size: 25px; 
-  color: white;
+  text-align: center; /*center text*/
+  font-size: 25px;
+  color: white; /*color of text*/
 }
 
-/*footer styling*/
-footer{
-  background-color: #f4f4f4; /*light grey background*/
-  color: #333; /*dark grey font*/
-  padding: 20px 0; /* 20px padding on the top and bottom*/
-  border-top: 1px solid #e4e4e4; /*light grey border on the top*/
+/*container for grid items, (boxes to hold content)*/
+.grid-container {
+  display: flex; /*flexible box layout*/
+  flex-wrap: wrap; /*allow content to wrap*/
+  justify-content: center; /*center grid items*/
 }
 
-/* !! button style */
-.buttonStyle {
-  padding: 10px;
-  width: 215px;
-  background-color: #364370; 
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor:pointer; /*make the cursor point when over a button*/
-}
-
-
-/*STYLING FOR TO DO LIST HERE */
-
-/*outer container, keep in grid format*/
-.todoBox {
-  display: flex;
-  justify-content: center; /*center horizontally*/
-  align-items: center; /*center vertically */
-  width: 50%;
-  height: 50vh; /*viewport height */
-  float: left; 
-  background-color: #253367; 
-}
-
-/*inner container*/
-.todoElements{
-  display: flex;
-  flex-direction: column; /*stack elements in column*/
-  align-items: center; /* center elements horizontally*/
-  justify-content: center; 
+.grid-item {
+  flex: 0 0 calc(25% - 20px); 
+  height: 20vh; 
   background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width:80%; /*width of its parent todoBox*/
-  height:80%; /*height of its parent todoBox*/
-  outline-color: black;
-  margin-left: 15%;
-  margin-right: 5%;
-}
-
-/*order of buttons in todobox*/
-.buttonOrder {
-  margin-top: 10px;
   display: flex;
-  flex-direction: column; /*buttons in vertical column*/
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 8%;
+  margin-bottom:50px;
+  margin-left:50px;
+  margin-right:50px;
+}
+ /*global style for buttons*/
+.buttonStyle{
+  background-color:#253367; 
+  color:white; /*text colour*/
+  border-radius:4px; /*for a curved edge*/
+  border:none; /*remove outline border*/
+  padding: 5%;
+  height:100%; /*take up 100% of their container*/
+  width: 100%; /*take up 100% of their container*/
+  cursor: pointer; /*make the cursor point when over a button*/
+  margin: 6px;
+}
+
+/*****************************************************WORKING ON RESPONSIVE WEBSITE**********************************************/
+@media (max-width: 600px) {
+  .grid-item {
+    flex: 1 1 100%; 
+  }
+}
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: center; 
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+/***************************************************************TO DO LIST *****************************************************/
+
+/*text input used for tasks*/
+#taskInput{
+height:100%; 
+width: 89%;
+border-radius: 4px; /*for a curved edge*/
+padding: 5%;
+}
+
+/*To do list buttons*/
+.buttonOrder {
+  display: flex;
+  flex-direction: column; 
+  gap: 2px; /*gap between buttons*/
   align-items: center; /*center buttons*/
-  gap: 10px; /*space between buttons*/
 }
 
-/*user task input for to do list*/
-#taskInput {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
+/**********************************************************TO DO LIST CHILDREN**********************************************************/
+/*style for crossing out completed tasks*/
 .linethrough{
-  text-decoration: line-through;
+  text-decoration: line-through; 
   color: #999;
 }
-
-
-/*!!!!!!!!!!LIST STYLING HERE!!!!!!!!!!!!!!!!!!! */
-
-/*outer container, keep in grid format*/
-.listBox {
-  display: flex;
-  justify-content: center; /*center horizontally*/
-  align-items: center; /*center vertically*/
-  width: 50%;
-  height: 50vh; /*viewport height */
-  float: left; 
-  background-color: #253367; 
-}
-
-/*inner container*/
+/*container for list elements*/
 .listElements{
-  display: flex;
-  flex-direction: column; /*stack li children in column*/
-  align-items: center; /*centre in container*/
-  justify-content: center;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width:80%; /*width of its parent listBox*/
-  height:80%;/*width of its parent listBox*/
-  outline-color: black;
-  margin-right: 15%;
-  margin-left: 5%;
-}
-
-/*task list styling*/
-#taskList {
-  list-style: none; /* Remove default list styling */
-  padding-left: 0; /* Remove default list padding */
-}
-
-/*tasklist li styling, born of the to do list input*/
-#taskList li {
-  display: flex;
-  align-items: center; 
-  margin-bottom: 10px; /* Space between tasks */
-}
-
-/* !!!!!!!!! TIMER STYLING HERE !!!!!!!!!! */
-
-/*outer container, keep in grid format*/
-.timerBox {
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  width: 50%;
-  height: 50vh; /*viewport height */
-  float: right; 
-  background-color: #253367; 
-}
-
-/*inner container*/
-.timerElements{
   display: flex;
   flex-direction: column; 
   align-items: center; 
-  justify-content: center; 
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width:80%; /*width of its parent timerBox*/
-  height:80%; /*height of its parent timerBox*/
-  outline-color: black;
-  margin-right:15%;
-  margin-left: 5%;
+  justify-content: center;
+}
+/*removing pre-existing styles for taskList*/
+#taskList {
+  list-style: none; 
+  padding-left: 0; 
 }
 
-.timerBox button {
-  padding: 10px 20px;
-  margin-top: 10px;
-  background-color: #364370;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 112px;
-}
-
-.timertext{
-  font-size: 100px;
-  color: rgb(67, 64, 64);
-}
-
-
-/*!!!!!!!!!!!!! NOTES STYLING HERE !!!!*/
-
-/*outer container, keep in grid format*/
-.notesBox {
+/*styling task children, list elements*/ 
+#taskList li {
   display: flex;
-  flex-direction:row;
-  justify-content: center; 
   align-items: center; 
-  width: 50%;
-  height: 50vh; 
-  float: right; 
-  background-color: #253367; 
+  margin-bottom: 10px; 
 }
 
-/*inner container*/
-.notesElements{
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center; 
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width:80%; /*width of its parent notesBox*/
-  height:80%; /*height of its parent notesBox*/
-  outline-color: black;
-  margin-left:15%;
-  margin-right: 5%;
-}
 
+/***************************NOTES LIST STYLING ******************************/
+/*notes text area*/
 #notesList {
-  margin-top: 10px;
-  resize: none;
-  padding: 5px;
-  font-family: 'Montserrat', sans-serif;
-  outline: none;  
-  border-color: white;
-  font-size: 16px;
-  width: 95%;
-  height: 80%;
+resize: none;
+padding: 5px;
+width: 100%;
+height: 100%;
+font-family: 'Montserrat', sans-serif;
+outline: none;  
+border-color:white;
+font-size: 16px;
+border-radius: 4px;
 }
 
-.notesbuttons{
-  padding: 10px 20px;
-  margin-top: 10px;
-  background-color: #364370;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 112px;
-  flex-direction: row; /*buttons in vertical column*/
-  
+
+/*styling the content inside the grid element*/
+.notesElements {
+display: block;
+flex-direction: column; 
+width: 100%; 
+height:100%;
 }
 
-.notesOrder{
-  display: flex;
-  flex-direction: row; 
-  justify-content: center; 
-  align-items: center; 
-  width: 100%; 
-  padding: 10px 0;
-  gap: 10px;
-  float: right;
-  justify-content: flex-end;
-  margin-right: 15px;
+/*container for the text area*/ 
+.notesTextArea{
+display: flex;
+flex-direction: row; 
+align-items: center; 
+width:100%;
+height:80%;
+
 }
+
+/*notes button styling*/
+.notesButtons {
+display: flex;
+flex-direction: row; 
+align-items: center; 
+margin-top: 10px; 
+gap:10px;
+}
+
+/***************************TIMER STYLING **************************************/
+
+/*styling the time display*/
+.timerText{
+font-size: 400%;
+color: rgb(37, 37, 37);
+}
+
+/*content inside the timer*/
+.timerElements {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+/*styling the top and bottom rows of buttons*/
+.topTimeButtons, .bottomTimeButtons {
+display: flex; 
+justify-content: center;
+gap: 1px; 
+}
+
+
+
+
 
