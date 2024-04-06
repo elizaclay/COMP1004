@@ -8,7 +8,17 @@
 
 </head>
 <body>
-
+    <!--MODAL-->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div id="modalTimerDisplay">00:00</div>
+        <span class="close">&times;</span>
+        <!-- Container for displaying the task list -->
+        <div id="modalContentContainer"></div>
+    </div>
+</div>
+    <div id =mainContent>
     <header>
         <h1>Study Buddy</h1> <!--website banner-->
     </header>
@@ -18,7 +28,7 @@
             <!--To do list-->
           <div class="grid-item">
               <div class = buttonOrder> 
-                <input type="text" id="taskInput" onkeydown="if(event.key === 'Enter'){ addTazk(); }" placeholder="Enter your task" >
+                <input type="text" id="taskInput" onkeydown="if(event.key === 'Enter'){ addTask(); }" placeholder="Enter your task" >
                 <button type="button" class="buttonStyle" onclick="addTask()">Add</button> 
                 <button type = "button" class="buttonStyle" onclick ="clearTasks()">Clear</button> 
                 <button type="button" class="buttonStyle" button id ="taskSave" class="button-style" >Save</button> 
@@ -29,6 +39,7 @@
 
 <!--TO DO LIST CHILDREN-->
           <div class="grid-item">
+            <div class= "listModalButton"> <button type ="button" id =listButton></button> </div> 
             <div class="listBox">
                 <div class ="listElements">
                 <ul id="taskList">
@@ -75,7 +86,29 @@
         </div>
 <!-------------------------------------------------------------------->
       </div>
+      </div>
+  
+      <footer>
+
+
+        <div class = "references"><p1>This site uses a sound from FreeSounds: birds.wav by funzerker -- https://freesound.org/s/520672/ -- License: Creative Commons 0</p1></div>
+      </footer>
       
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
       <script src="script.js"></script>
 </body>
 </html>

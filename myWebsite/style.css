@@ -16,6 +16,19 @@ header {
   color: white; /*color of text*/
 }
 
+  /*footer, containing references */
+  footer {
+    background-color: #ffffff; 
+    color: black; 
+    padding: 20px 0; 
+    opacity: 0.9;
+    font-size:10px;
+  }
+/*references text */
+  .references{
+    margin-left: 10px;
+  }
+
 /*container for grid items, (boxes to hold content)*/
 .grid-container {
   display: flex; /*flexible box layout*/
@@ -24,6 +37,7 @@ header {
 }
 
 .grid-item {
+  position: relative;
   flex: 0 0 calc(25% - 20px); 
   height: 20vh; 
   background-color: #ffffff;
@@ -112,6 +126,15 @@ padding: 5%;
   margin-bottom: 10px; 
 }
 
+.listModalButton {
+  position: absolute;
+  top: 0;   /* Align to the top of the container */
+  right: 0; /* Align to the right of the container */
+  border-radius: 4px;
+  padding: 10px;
+  cursor:pointer;
+  /* Add padding, margin, etc., as needed */
+}
 
 /***************************NOTES LIST STYLING ******************************/
 /*notes text area*/
@@ -177,7 +200,60 @@ justify-content: center;
 gap: 1px; 
 }
 
+/**************************MODAL****************************/
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 10% auto; /* 10% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius:10px;
+  width: 35%; /* Could be more or less, depending on screen size */
+  height: 30%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*style to blur background when modal is open*/
+.blurred {
+  filter: blur(10px);
+}
+
+/*the timer inside the modal*/
+#modalTimerDisplay{
+  font-size: 10vh;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: rgb(37, 37, 37);
+}
 
 
 

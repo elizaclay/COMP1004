@@ -1,6 +1,6 @@
 
 //new add tasks function, checkbox appends before task 
-function addTazk() {
+function addTask() {
     var taskInput = document.getElementById('taskInput');  // get the user text input 
     var taskList = document.getElementById('taskList'); // get the list
     var maxNum = 6; //maximum number of tasks
@@ -34,39 +34,6 @@ function addTazk() {
         });
     }
 }
-
-
-
-/*function addTask() { // adds a user's task to the task-list if existing tasks does not exceed limit
-    var taskInput = document.getElementById('taskInput'); // get the user text input 
-    var taskList = document.getElementById('taskList'); // get the list
-    var maxNum = 6; //maximum number of tasks
-
-    if (taskInput.value.trim() !== ''&& taskList.children.length < maxNum) { //If the input is not empty and tasks do not exceed max value, add task to list
-        //create a new list item
-        var li = document.createElement('li');
-        li.appendChild(document.createTextNode(taskInput.value));
-
-        taskInput.value = ''; // clear the input box after a task is added
-        
-        var checkbox = document.createElement('input');
-        checkbox.type = 'checkbox'; //define input as check box 
-        checkbox.className = 'taskCheckbox'; //check box class 
-        li.appendChild(checkbox); //append checkbox to task
-
-        taskList.appendChild(li); // add new task to the list 
-
-        checkbox.addEventListener('change', function() {
-            if (this.checked) {
-                li.classList.add('linethrough'); // when the check box is ticked, cross out the task using css class
-                setTimeout(function() {
-                    li.remove();  // remove task.. after 3milliseconds
-                }, 300); 
-            }
-        });
-        
-}
-}*/
 
 function clearTasks() {
   // Show confirmation pop up to warn the user
@@ -215,12 +182,18 @@ const startButton =document.getElementById('start'); //get start
 const stopButton = document.getElementById('stop'); //get stop button 
 const resetButton = document.getElementById('reset') //get reset button
 
-var timerEndSound = new Audio("520672__funzerker__birds.wav"); //audio to be used when the timer ends -- need to remember to reference this !! 
+var timerEndSound = new Audio("520672__funzerker__birds.wav"); 
 
 function updateTimer(time) {
     const minutes = Math.floor(time / 60); //calculate the minutes
     const seconds = time % 60; //calculate the seconds 
-    timerElement.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; //formatting to show 00:00
+    const formattedTime = timerElement.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; //formatting to show 00:00
+
+    //If the modal is open, update timer there too 
+    var modalTimerDisplay = document.getElementById('modalTimerDisplay');//get modal timer 
+    if (modalTimerDisplay) {
+        modalTimerDisplay.textContent = formattedTime; //update the time with "formattedTime"
+    }
 }
 
 tenButton.addEventListener('click', function() { //event listener for 10 min button
@@ -284,4 +257,45 @@ function countReset () { //function to reset count to 00:00
     
 }
 resetButton.addEventListener('click', countReset); //call function to reset timer to 00:00 when reset button is clicked 
+
+//**********************MODAL STUFF***********************************************/ 
+
+var modal = document.getElementById("myModal"); //get the modal
+var btn = document.getElementById("listButton"); //get the button that triggers the opening of the modal
+var webContent =document.getElementById("mainContent"); //this contains all the content on the website beside the modal
+var span = document.getElementsByClassName("close")[0];  //close button 
+
+btn.onclick = function() {
+    
+    var taskList = document.getElementById('timer'); 
+    var modalContentContainer = document.getElementById('modalContentContainer');
+    modal.style.display = "block"; 
+    mainContent.classList.add("blurred"); //when the modal is open blur the MainContent of the website behind it  
+}
+// when the close button is clicked
+span.onclick = function() {
+  modal.style.display = "none"; //don't display the modal
+  webContent.classList.remove("blurred"); //remove the blurred effect from the maincontent of the website behind it 
+}
+
+//when anywhere other than the modal is clicked
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none"; //don't display the modal
+    webContent.classList.remove("blurred"); //remove the blurred effect from the maincontent of the website behind it
+  }
+} 
+
+
+btn.onclick = function() {
+    //the modal timer display is updated when the modal opens
+    updateTimer(currentTime);
+    modal.style.display = "block";
+    webContent.classList.add("blurred");
+};
+
+
+
+
+
 
