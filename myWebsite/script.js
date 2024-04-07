@@ -78,12 +78,26 @@ function saveData(type){
 
     } 
    
-    if (type === "notes") { //if the type is notes then gather data from "notesList" and store 
+    if (type === "notes") { //if the type is notes then gather data from notes list
 
         jsonDataType = document.getElementById('notesList').value; //get entire value of the text area(notesList) defined in html
+
+        if (jsonDataType=="") { //if empty return (no download) 
+
+             return;
+
+
+        }
+
         jsonData.push(jsonDataType); //push to jsonData array to be used later, in download
 
      }
+
+     if (jsonData.length == 0) { //if empty return (no download) 
+        
+        return;
+
+    }
  
  var dataJSON = JSON.stringify({ [type]: jsonData }); //convert data to json string and format 
  var blob = new Blob([dataJSON], { type: "application/json" }); //create blob
@@ -229,12 +243,12 @@ function countDown() {  //function for counting down
             clearInterval(interval) //clear the interval
             countReset() //call function to set timer back to 00:00 
             timerEndSound.play();
-            var endSession = confirm ("Time's up! Please reset the timer if you wish to continue studying") //js pop up awaiting user confirmation
+            var endSession = alert("Time's up! Please reset the timer if you wish to continue studying") //js pop up awaiting user confirmation
         }
-        if (endSession){ //if user clicks ok 
+ 
             timerEndSound.pause(); //pause sound
             timerEndSound.currentTime = 0; //reset sound to 0 (start of sound)
-        }
+
         updateTimer(currentTime); //update the time being displayed
     }, 1000); // repeat this function every second 
 }
