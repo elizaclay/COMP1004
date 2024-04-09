@@ -92,7 +92,6 @@ if (downloadConfirm){ //if user confirms download, continue inner function if no
             alert('Error: Notes are empty.'); //error message as js alert
              return;
 
-
         }
 
         jsonData.push(jsonDataType); //push to jsonData array to be used later, in download
@@ -105,6 +104,7 @@ if (downloadConfirm){ //if user confirms download, continue inner function if no
         return;
 
     }
+}
  
  var dataJSON = JSON.stringify({ [type]: jsonData }); //convert data to json string and format 
  var blob = new Blob([dataJSON], { type: "application/json" }); //create blob
@@ -115,6 +115,7 @@ if (downloadConfirm){ //if user confirms download, continue inner function if no
  document.body.appendChild(link); //temporarily store link 
  link.click(); //download trigger
  document.body.removeChild(link);  //remove link for efficiency 
+
 }
 
 // Attach change event listener to file input for handling file uploads
@@ -145,7 +146,7 @@ document.getElementById('fileInput').addEventListener('change', function() {
         alert('Please select a file first!'); // if no file was selected show message using js alert 
     }
 });
-}
+
 
 
 document.getElementById('taskUpload').addEventListener('click', function() { //event listener for taksk upload button
@@ -157,30 +158,32 @@ document.getElementById('notesUpload').addEventListener('click', function() { //
 });
 
 
-function displayTasks(tasks) { //function with tasks from file passed to it
-    const taskList = document.getElementById('taskList'); //get the task list before clearing it
-    taskList.innerHTML = ''; //clear the task list before uploading the tasks from json
+function displayTasks(tasks) { //function with tasks passed to it
+    const taskList = document.getElementById('taskList'); //get the task list 
+    taskList.innerHTML = ''; //clear task list 
 
     tasks.forEach(task => { //for each task extracted do the following
-        const li = document.createElement('li'); //create element in list 
-        li.textContent = task; // each element of the list is a task
+        const li = document.createElement('li'); //create list element
+        const checkbox = document.createElement('input'); //create input
+        checkbox.type = 'checkbox';  // set input to checkbox type
+        checkbox.className = 'taskCheckbox'; //class for styling checkbox
 
-        const checkbox = document.createElement('input'); //create input type 
-        checkbox.type = 'checkbox'; //set type to checkbox
-        checkbox.className = 'taskCheckbox'; //set class name for styling
+        const textSpan = document.createElement('span'); //span element
+        textSpan.textContent = task; //span element holds task(s)
 
         checkbox.addEventListener('change', function() { //detect change in input state (checked or unchecked box)
             if (checkbox.checked) { //if the box is checked ..
-                li.classList.add('linethrough');  //add line through, css (cross out)
-                                setTimeout(function() {
-                    li.remove();  // remove task.. after 3milliseconds, for smoothness 
+                li.classList.add('linethrough'); //add line through, css (cross out)
+                setTimeout(function() {
+                    li.remove(); // remove task.. after 3milliseconds, for smoothness 
                 }, 300);
-
-            } 
+            }
         });
 
-        taskList.appendChild(li); //append task to list 
-        li.appendChild(checkbox); //append checkbox to task
+        li.appendChild(checkbox); 
+        li.appendChild(textSpan); 
+
+        taskList.appendChild(li); 
     });
 }
 
