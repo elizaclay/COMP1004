@@ -65,7 +65,12 @@ function saveData(type){
 
     var jsonDataType;
 
+    var downloadConfirm = confirm("Do you want to proceed with downloading your " + type + "?"); //js alert asking if they want to download notes/tasks
+
+
     //conditional logic for if the data is gathered from tasks or notes 
+if (downloadConfirm){ //if user confirms download, continue inner function if not do nothing
+
 
     if (type === "tasks"){
     jsonDataType = document.getElementById('taskList'); //if the type is tasks then gather data from "tasksList" and store 
@@ -84,6 +89,7 @@ function saveData(type){
 
         if (jsonDataType=="") { //if empty return (no download) 
 
+            alert('Error: Notes are empty.'); //error message as js alert
              return;
 
 
@@ -94,7 +100,8 @@ function saveData(type){
      }
 
      if (jsonData.length == 0) { //if empty return (no download) 
-        
+
+        alert('Error: Tasks are empty.'); //error message as js alert
         return;
 
     }
@@ -138,6 +145,7 @@ document.getElementById('fileInput').addEventListener('change', function() {
         alert('Please select a file first!'); // if no file was selected show message using js alert 
     }
 });
+}
 
 
 document.getElementById('taskUpload').addEventListener('click', function() { //event listener for taksk upload button
