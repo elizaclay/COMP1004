@@ -1,7 +1,9 @@
 # COMP1004
 Computing Practice
 
-Project Title: Study Buddy
+Project Title
+--------------
+Study Buddy
 
 Project Vision
 ---------------
