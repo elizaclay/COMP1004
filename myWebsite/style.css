@@ -86,6 +86,7 @@ header {
 
 /*text input used for tasks*/
 #taskInput{
+margin-top: 5px;
 height:100%; 
 width: 89%;
 border-radius: 4px; /*for a curved edge*/
