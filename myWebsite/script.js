@@ -11,6 +11,11 @@ function addTask() {
         return;
     }
 
+    if (taskList.children.length >= maxNum){ //check to see if max number of tasks has been reached
+        alert("Error: Maximum number of " + maxNum + " exceeded."); //alert user of error 
+        return;
+    }
+
     if (taskInput.value.trim() !== '' && taskList.children.length < maxNum) {  //If the input is not empty and tasks do not exceed max value, add task to list
         
         var li = document.createElement('li'); //create a new list item
