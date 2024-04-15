@@ -1,12 +1,16 @@
-
 //new add tasks function, checkbox appends before task 
 function addTask() {
     var taskInput = document.getElementById('taskInput');  // get the user text input 
     var taskList = document.getElementById('taskList'); // get the list
     var maxNum = 6; //maximum number of tasks
     var maxText = 36; //maximum number of chars per task
-    
-    if (taskInput.value.trim().length > maxText){
+
+    if(taskInput.value.trim() === ''){ // if the task input is empty
+        alert("Error: Please enter a task"); //error warning user that the task input is empty
+        return; 
+    }
+     
+    if (taskInput.value.trim().length > maxText){ //if the length of the task input is more than the maximum character limit 
         alert("Error: Maximum character limit of " + maxText + " exceeded."); //alert message for maximum charcter limit per task
         return;
     }
@@ -15,8 +19,6 @@ function addTask() {
         alert("Error: Maximum number of " + maxNum + " exceeded."); //alert user of error 
         return;
     }
-
-    if (taskInput.value.trim() !== '' && taskList.children.length < maxNum) {  //If the input is not empty and tasks do not exceed max value, add task to list
         
         var li = document.createElement('li'); //create a new list item
 
@@ -26,10 +28,10 @@ function addTask() {
         checkbox.type = 'checkbox'; //set input type to checkbox
         checkbox.className = 'taskCheckbox'; 
 
-        checkboxDiv.appendChild(checkbox); //append checckbox
+        checkboxDiv.appendChild(checkbox); //append checkbox
         var taskTextSpan = document.createElement('span'); //span element to hold tasks 
         taskTextSpan.className = 'taskText'; 
-        taskTextSpan.textContent = taskInput.value; //whatever has been written into the input
+        taskTextSpan.textContent = taskInput.value; //content that has been written into the input
         li.appendChild(checkboxDiv);
         li.appendChild(taskTextSpan);
         taskList.appendChild(li);
@@ -43,8 +45,8 @@ function addTask() {
                 }, 300);  // ..after 3 milliseconds
             }
         });
-    }
 }
+
 
 function clearTasks() {
   // Show confirmation pop up to warn the user
@@ -69,7 +71,7 @@ saveData('notes');
 //New Save Data function for flexible use: 
 //Get the data from taskList OR NoteList, Type is set by event listeners and passed to function
 function saveData(type){
-    alert(`saveData called with type: ${type}`); // checking data type for error debugging 
+    //alert(`saveData called with type: ${type}`); // checking data type for error debugging 
 
     //set empty array for use
     var jsonData = []; 
