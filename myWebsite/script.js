@@ -4,6 +4,12 @@ function addTask() {
     var taskInput = document.getElementById('taskInput');  // get the user text input 
     var taskList = document.getElementById('taskList'); // get the list
     var maxNum = 6; //maximum number of tasks
+    var maxText = 36; //maximum number of chars per task
+    
+    if (taskInput.value.trim().length > maxText){
+        alert("Error: Maximum character limit of " + maxText + " exceeded."); //alert message for maximum charcter limit per task
+        return;
+    }
 
     if (taskInput.value.trim() !== '' && taskList.children.length < maxNum) {  //If the input is not empty and tasks do not exceed max value, add task to list
         
@@ -310,7 +316,6 @@ window.onclick = function(event) {
     webContent.classList.remove("blurred"); //remove the blurred effect from the maincontent of the website behind it
   }
 } 
-
 
 btn.onclick = function() {
     //the modal timer display is updated when the modal opens
