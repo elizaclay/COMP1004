@@ -1,8 +1,15 @@
-//new add tasks function, checkbox appends before task 
-function addTask() {
+//function to get tasks from to do list form
+function getTodo(){ 
     var taskInput = document.getElementById('taskInput');  // get the user text input 
     var taskList = document.getElementById('taskList'); // get the list
-    var maxNum = 6; //maximum number of tasks
+}
+
+//function to add tasks to task list and append checkbox input
+function addTask() {
+
+    getTodo();
+
+    var maxNum = 8; //maximum number of tasks
     var maxText = 36; //maximum number of chars per task
 
     if(taskInput.value.trim() === ''){ // if the task input is empty
@@ -47,7 +54,6 @@ function addTask() {
         });
 }
 
-
 function clearTasks() {
   // Show confirmation pop up to warn the user
   var confirmClear = confirm("You are about to erase all tasks, are you sure you want to do this?"); //js pop up warning message
@@ -59,12 +65,12 @@ function clearTasks() {
 }
 
 //event listener for save click on tasks, used to set "type"
-document.getElementById('taskSave').addEventListener('click', function() {
+document.getElementById('taskSave').addEventListener('click', function saveDataTasks() {
 saveData('tasks');
 });
 
 //event listener for save click on notes, used to set "type"
-document.getElementById('saveNotes').addEventListener('click', function() {
+document.getElementById('saveNotes').addEventListener('click', function saveDataNotes() {
 saveData('notes'); 
 });
 
@@ -74,6 +80,8 @@ function saveData(type){
     //alert(`saveData called with type: ${type}`); // checking data type for error debugging 
 
     //set empty array for use
+    var notesChar = 5000; //character limit for notes to download
+
     var jsonData = []; 
 
     var jsonDataType;
@@ -107,6 +115,11 @@ if (downloadConfirm){ //if user confirms download, continue inner function if no
 
         }
 
+        if (jsonDataType.length > notesChar){ //character limit of 5000 so that 
+            alert('Error: Notes have exceeded ' + notesChar + ' character limit')
+            return;
+        }
+
         jsonData.push(jsonDataType); //push to jsonData array to be used later, in download
 
      }
@@ -132,7 +145,7 @@ if (downloadConfirm){ //if user confirms download, continue inner function if no
 }
 
 // Attach change event listener to file input for handling file uploads
-document.getElementById('fileInput').addEventListener('change', function() {
+document.getElementById('fileInput').addEventListener('change', function uploadFiles() {
     var file = fileInput.files[0]; //get the first file from the file input
 
     if (file) { //if a file has been selected 
@@ -161,12 +174,11 @@ document.getElementById('fileInput').addEventListener('change', function() {
 });
 
 
-
-document.getElementById('taskUpload').addEventListener('click', function() { //event listener for taksk upload button
+document.getElementById('taskUpload').addEventListener('click', function uploadTasksButton() { //event listener for taksk upload button
     document.getElementById('fileInput').click(); 
 });
  
-document.getElementById('notesUpload').addEventListener('click', function() { //event listener for notesupload button
+document.getElementById('notesUpload').addEventListener('click', function uploadNotesButton() { //event listener for notesupload button
     document.getElementById('fileInput').click();
 });
 
@@ -184,7 +196,7 @@ function displayTasks(tasks) { //function with tasks passed to it
         const textSpan = document.createElement('span'); //span element
         textSpan.textContent = task; //span element holds task(s)
 
-        checkbox.addEventListener('change', function() { //detect change in input state (checked or unchecked box)
+        checkbox.addEventListener('change', function checkBoxChange() { //detect change in input state (checked or unchecked box)
             if (checkbox.checked) { //if the box is checked ..
                 li.classList.add('linethrough'); //add line through, css (cross out)
                 setTimeout(function() {
@@ -208,9 +220,9 @@ function displayNotes(notes) { //function with notes from file passed to it
 }
 
 // Working with the countdown timer 
-let currentTime = null; // current time in seconds
-let interval = null; //initalise interval for counting down timer 
-let timerRunning = false;
+var currentTime = null; // current time in seconds
+var interval = null; //initalise interval for counting down timer 
+var timerRunning = false;
 
 const timerElement = document.getElementById('timer'); ///get the timer display 
 const tenButton = document.getElementById('ten'); //get 10 min button
@@ -234,24 +246,24 @@ function updateTimer(time) {
     }
 }
 
-tenButton.addEventListener('click', function() { //event listener for 10 min button
+tenButton.addEventListener('click', function setTenMins() { //event listener for 10 min button
     currentTime = 0.05 * 60; //set current time to 10 mins
     updateTimer(currentTime); //update the current time
 
 });
 
-twentyButton.addEventListener('click',function(){ //event listener for 20min button
+twentyButton.addEventListener('click',function setTwentyMins(){ //event listener for 20min button
     currentTime = 20*60; //set current time to 20 mins
     updateTimer(currentTime); //update the current time
 });
 
-thirtyButton.addEventListener('click', function(){ //event listener for 30min button
+thirtyButton.addEventListener('click', function setThirtyMins(){ //event listener for 30min button
     currentTime = 30*60; //set current time to 30mins
     updateTimer(currentTime); //update current time
 
 });
 
-startButton.addEventListener('click', function(){
+startButton.addEventListener('click', function newInterval(){
     countDown(); //call countdown function when the start button is clicked 
     timerRunning = true; 
 });
@@ -303,7 +315,7 @@ var btn = document.getElementById("listButton"); //get the button that triggers 
 var webContent =document.getElementById("mainContent"); //this contains all the content on the website beside the modal
 var span = document.getElementsByClassName("close")[0];  //close button 
 
-btn.onclick = function() {
+btn.onclick = function tModal() {
     
     var taskList = document.getElementById('timer'); 
     var modalContentContainer = document.getElementById('modalContentContainer');
