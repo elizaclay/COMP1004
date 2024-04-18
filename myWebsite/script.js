@@ -87,6 +87,9 @@ function saveData(type){
     var jsonDataType;
 
     var downloadConfirm = confirm("Do you want to proceed with downloading your " + type + "?"); //js alert asking if they want to download notes/tasks
+    if (!downloadConfirm){ //if cancel is clicked no download occurs 
+        return;
+    }
 
 
     //conditional logic for if the data is gathered from tasks or notes 
