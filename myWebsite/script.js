@@ -1,4 +1,4 @@
-//function to get tasks from to do list form
+//function to get tasks from to do list form, will be integrated with function addTask()
 function getTodo(){ 
     var taskInput = document.getElementById('taskInput');  // get the user text input 
     var taskList = document.getElementById('taskList'); // get the list
@@ -9,7 +9,7 @@ function addTask() {
 
     getTodo();
 
-    var maxNum = 8; //maximum number of tasks
+    var maxNum = 6; //maximum number of tasks
     var maxText = 36; //maximum number of chars per task
 
     if(taskInput.value.trim() === ''){ // if the task input is empty
@@ -49,7 +49,7 @@ function addTask() {
                 li.style.textDecoration = 'line-through'; //use css linethrough to cross out task
                 setTimeout(function() {
                     li.remove(); //remove task ..... 
-                }, 300);  // ..after 3 milliseconds
+                }, 300);  // ..after 300 milliseconds
             }
         });
 }
@@ -247,7 +247,7 @@ function updateTimer(time) {
 }
 
 tenButton.addEventListener('click', function setTenMins() { //event listener for 10 min button
-    currentTime = 0.05 * 60; //set current time to 10 mins
+    currentTime = 10 * 60; //set current time to 10 mins
     updateTimer(currentTime); //update the current time
 
 });
