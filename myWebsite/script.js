@@ -235,7 +235,7 @@ const startButton =document.getElementById('start'); //get start
 const stopButton = document.getElementById('stop'); //get stop button 
 const resetButton = document.getElementById('reset') //get reset button
 
-var timerEndSound = new Audio("520672__funzerker__birds.wav"); 
+var timerEndSound = new Audio("520672__funzerker__birds.wav"); // sound from FreeSounds: birds.wav by funzerker -- https://freesound.org/s/520672/ -- License: Creative Commons 0
 
 function updateTimer(time) {
     const minutes = Math.floor(time / 60); //calculate the minutes
